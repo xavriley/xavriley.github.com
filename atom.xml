@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Xavier Riley <code>||=</code> Web Developer, Guildford]]></title>
+  <title><![CDATA[Xavier Riley ||= Web Developer, Guildford]]></title>
   <link href="http://xavriley.github.com/atom.xml" rel="self"/>
   <link href="http://xavriley.github.com/"/>
-  <updated>2012-01-21T17:13:02+00:00</updated>
+  <updated>2012-01-21T17:15:28+00:00</updated>
   <id>http://xavriley.github.com/</id>
   <author>
     <name><![CDATA[Xavier Riley]]></name>
