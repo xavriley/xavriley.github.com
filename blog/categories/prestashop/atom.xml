@@ -4,7 +4,7 @@
   <title><![CDATA[Category: prestashop | Xavier Riley ||= Web Developer, Guildford]]></title>
   <link href="http://xavriley.github.com/blog/categories/prestashop/atom.xml" rel="self"/>
   <link href="http://xavriley.github.com/"/>
-  <updated>2012-01-21T17:15:28+00:00</updated>
+  <updated>2012-01-21T17:18:05+00:00</updated>
   <id>http://xavriley.github.com/</id>
   <author>
     <name><![CDATA[Xavier Riley]]></name>
@@ -61,7 +61,7 @@ Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse 
 
 <p>and in it put the following;</p>
 
-<p>```php
+<p>``` php
 class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 {
 /<em>*
