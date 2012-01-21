@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Xavier Riley ||= Web Developer, Guildford</title>
+  <title>7 Ways to speed up your Ruby Dev Environment - Xavier Riley ||= Web Developer, Guildford</title>
   <meta name="author" content="Xavier Riley">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://xavierriley.co.uk">
+  <link rel="canonical" href="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -74,15 +74,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/">7 Ways to Speed Up Your Ruby Dev Environment</a></h1>
+      <h1 class="entry-title">7 Ways to Speed Up Your Ruby Dev Environment</h1>
     
     
       <p class="meta">
@@ -105,7 +102,7 @@
   </header>
 
 
-  <div class="entry-content"><p><a href="http://zacholman.com">Zach Holman</a> <a href="http://zachholman.com/talk/how-github-uses-github-to-build-github">gave a great talk recently</a> in which he pretty much summed up my feelings about Ruby in one of his slides;</p>
+<div class="entry-content"><p><a href="http://zacholman.com">Zach Holman</a> <a href="http://zachholman.com/talk/how-github-uses-github-to-build-github">gave a great talk recently</a> in which he pretty much summed up my feelings about Ruby in one of his slides;</p>
 
 <blockquote><p>&#8220;Ruby is so fast, I love it so much. Not computationally speaking of
 course, cos in that sense its slow as f&#8230;&#8221;</p></blockquote>
@@ -242,22 +239,16 @@ in your life.</p>
 <p>That&#8217;s it for now. Any other suggestions please stick them in a comment
 or get me on twitter.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/">Transferring Customers From Prestashop to Magento</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Xavier Riley</span></span>
+
+      
 
 
 
@@ -269,157 +260,46 @@ or get me on twitter.</p>
   
 
 
-<time datetime="2010-09-03T00:00:00+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2010</time>
-        
-      </p>
+<time datetime="2012-01-21T20:01:00+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>There’s always debate about which ecommerce platform is harder/better/faster/stronger, and from experience of Prestashop and Magento I can say they’re both really good for different types of shops. For <a href="http::www.forsyths.co.uk/">Forsyths</a>, I developed a Prestashop solution for their Sheet Music department whilst I was working there and it’s been great so far but…</p>
-
-<p><del>When picking a solution it really pays to do some forward planning and in this case, Prestashop can’t scale up to the kind of multi-store functionality that this music department store needed. That said, it was a lot easier getting a Prestashop store off the ground (I tried both at the start) and it’s served us well. My only gripe is that Prestashop’s module and templating system isn’t flexible enough to make real changes without editing the core – and that screws up future updates. Not what you need for ecommerce purposes.</del></p>
-
-<p><em>UPDATE</em>
-Since writing this, it&#8217;s all change with Prestashop v1.5
-They&#8217;ve had a basic overrides system in place for a while now.
-Also the new version supports multistore but I haven&#8217;t used it, yet&#8230;</p>
-
-<p>** Making the switch</p>
-
-<p>Swapping out the products from PS to Mage is pretty straightforward – it’s just a case of a mysql query which maps them into the right fields. As with any Magento import the process is more or less similar;</p>
-
-<ul>
-<li>Add some dummy data into Magento, using all the fields you’re likely to use</li>
-<li>Export the data as a csv using System > Import/Export > Profiles</li>
-<li>Look at the file in your var/export folder and take a look at the headers</li>
-</ul>
-
-
-<p>Tip for *nix users working with csv files – in terminal use the following command to save the first two lines to a file;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>head -n 2 your_csv_file.csv &gt; your_csv_file_head.csv
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That’s if your csv file is really big.</p>
-
-<p>** The problem with users</p>
-
-<p>Now the above works fine for most things, but the problem with users lies in the different authentication that both shops use. Magento uses MD5 with a salt on the end, Prestashop uses a ‘Cookie Key’ prefix to the customer password, which is then MD5 encrypted.
-Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse an MD5 into plain text, therefore you can’t get the original password strings in order to re-encode them (which is actually a good thing…).</p>
-
-<p>** How to fix it</p>
-
-<p>Clearly its impossible to convert from one MD5 hash to another so we have to try something different. Make the following file;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">(</span>magentoroot<span class="o">)</span>/app/code/local/Mage/Customer/Model/Customer.php
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and in it put the following;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract</span>
-</span><span class='line'><span class="x">{</span>
-</span><span class='line'><span class="x">/**</span>
-</span><span class='line'><span class="x">* Authenticate customer</span>
-</span><span class='line'><span class="x">*</span>
-</span><span class='line'><span class="x">* @param string $login</span>
-</span><span class='line'><span class="x">* @param string $password</span>
-</span><span class='line'><span class="x">* @return true</span>
-</span><span class='line'><span class="x">* @throws Exception</span>
-</span><span class='line'><span class="x">*/</span>
-</span><span class='line'><span class="x">public function authenticate($login, $password)</span>
-</span><span class='line'><span class="x">{</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">$this-&gt;loadByEmail($login);</span>
-</span><span class='line'><span class="x">if ($this-&gt;getConfirmation() &amp;&amp; $this-&gt;isConfirmationRequired()) {</span>
-</span><span class='line'><span class="x">throw Mage::exception(&#39;Mage_Core&#39;, Mage::helper(&#39;customer&#39;)-&gt;__(&#39;This account is not confirmed.&#39;),</span>
-</span><span class='line'><span class="x">self::EXCEPTION_EMAIL_NOT_CONFIRMED</span>
-</span><span class='line'><span class="x">);</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'><span class="x">if (!$this-&gt;validatePassword($password) &amp;&amp; !$this-&gt;validatePassword(&#39;hKvthisisyourgibberishcookiestringfromprestashopCM&#39;.$password)) {</span>
-</span><span class='line'><span class="x">throw Mage::exception(&#39;Mage_Core&#39;, Mage::helper(&#39;customer&#39;)-&gt;__(&#39;Invalid login or password.&#39;),</span>
-</span><span class='line'><span class="x">self::EXCEPTION_INVALID_EMAIL_OR_PASSWORD</span>
-</span><span class='line'><span class="x">);</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'><span class="x">Mage::dispatchEvent(&#39;customer_customer_authenticated&#39;, array(</span>
-</span><span class='line'><span class="x">&#39;model&#39; =&gt; $this,</span>
-</span><span class='line'><span class="x">&#39;password&#39; =&gt; $password,</span>
-</span><span class='line'><span class="x">));</span>
-</span><span class='line'><span class="x">return true;</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="x">//end class</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'><span class="x">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Notice the random string prepended to the password variable? That’s your cookie string which you’ll find in your Prestashop install here;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">(prestshop root)/config/settings.inc.php</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It’s the line beginning</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="x">define(&#39;_COOKIE_KEY_&#39;, &#39;ThisIsTheBitYouWant...&#39; </span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Believe it or not that’s all you need to do. Import your MD5 hashes from Prestashop straight into Magento and it’ll authenticate them as Prestashop would do. I’ll go through the mysql import in another post.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/" data-via="xavriley" data-counturl="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="small"></div>
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/" title="Previous Post: Transferring Customers From Prestashop To Magento">&laquo; Transferring Customers From Prestashop To Magento</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -440,7 +320,7 @@ Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse 
 <section>
   <h1>Github Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/xavierRiley">@xavierRiley</a> on Github
@@ -470,7 +350,7 @@ Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse 
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -506,6 +386,7 @@ Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse 
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -520,7 +401,10 @@ Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse 
       var disqus_shortname = 'xavierriley';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/';
+        var disqus_url = 'http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

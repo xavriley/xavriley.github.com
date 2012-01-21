@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Xavier Riley ||= Web Developer, Guildford]]></title>
+  <link href="http://xavierriley.co.uk/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://xavierriley.co.uk/"/>
+  <updated>2012-01-21T21:24:30+00:00</updated>
+  <id>http://xavierriley.co.uk/</id>
+  <author>
+    <name><![CDATA[Xavier Riley]]></name>
+    <email><![CDATA[info@xavierriley.co.uk]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[7 Ways to speed up your Ruby Dev Environment]]></title>
+    <link href="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/"/>
+    <updated>2012-01-21T20:01:00+00:00</updated>
+    <id>http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment</id>
+    <content type="html"><![CDATA[<p><a href="http://zacholman.com">Zach Holman</a> <a href="http://zachholman.com/talk/how-github-uses-github-to-build-github">gave a great talk recently</a> in which he pretty much summed up my feelings about Ruby in one of his slides;</p>
+
+<blockquote><p>"Ruby is so fast, I love it so much. Not computationally speaking of
+course, cos in that sense its slow as f..."</p></blockquote>
+
+<p>That said, if you're working with it all day it pays to get it working
+as fast as you can so here's some stuff I've cobbled together in the
+hope that it speeds up your dev workflow.</p>
+
+<h2>1) Use bundler --pre</h2>
+
+<p>If you're waiting forever for gems to install with bundler, make sure
+you're using the new 1.1 rc. Not convinced?</p>
+
+<p></p>
+
+<p>If you want to read up on why it's so much faster <a href="http://patshaughnessy.net/2011/10/14/why-bundler-1-1-will-be-much-faster">there's a great write
+up by Pat Shaughnessy over here</a></p>
+
+<h2>2) Ride the Unicorn</h2>
+
+<p><code>
+gem install unicorn
+unicorn_rails
+</code></p>
+
+<p>I've found <a href="http://patshaughnessy.net/2011/10/14/why-bundler-1-1-will-be-much-faster">Unicorn</a> to be a better server for local development compared
+with mongrel or thin. Works with any Rack based applications too.</p>
+
+<h2>3) Make Vhosts config a thing of the past with Pow!!</h2>
+
+<blockquote><p><a href="http://pow.cx/">Pow</a> is a zero-config Rack server for Mac OS X. Have it serving your apps locally in under a minute.</p></blockquote>
+
+<p>If you're managing multiple sites (as most devs are) Pow is a useful
+server to have for Rack and Rails apps. Getting a site set up is as
+simple as symlinking into a folder and it's ready to view at foobar.dev</p>
+
+<p>That said, I found it to be a bit of a pain running alongside a local
+Apache install (for PHP sites) as it screwed with the /etc/hosts. That
+was until I discovered <a href="https://github.com/Rodreegez/powder.git">Powder</a>
+which gives you some shell commands for getting Pow!! to play nicely
+with the other servers.</p>
+
+<p>```
+gem install powder
+powder link # Symlinks the current folder
+powder applog # Tails the current application logfile</p>
+
+<h1>My personal favourites</h1>
+
+<p>powder up   # Enable pow
+powder down # Disable pow
+```</p>
+
+<h2>4) Speed up your Rails boot time with Ruby 1.9.3 or 1.9.2-head</h2>
+
+<p>My namesake <a href="http://rhnh.net/2011/05/28/speeding-up-rails-startup-time">Xavier Shay identified a big win in speeding up how Rails
+requires
+files.</a>. The
+patch subsequently made it into Ruby 1.9.3 and a 1.9.2 patch, but it
+doesn't affect the earlier 1.8.7 or Ree. If you haven't done it already,
+update using the following commands (assuming you're using RVM).</p>
+
+<p>```
+rvm get head
+rvm install 1.9.3</p>
+
+<h2>or</h2>
+
+<p>rvm install 1.9.2-head
+```</p>
+
+<p>Enjoy the faster boot times.</p>
+
+<h2>5) Speed up all your Gem installations by using your .rvmrc file</h2>
+
+<p>RVM can have global settings specified in a .rvmrc file. My preference
+is to do without the ri and rdoc when I'm installing a gem, as I'm
+pretty happy being able to either look it up or install when needed. You
+can do the same with the following commands. First off, create the file
+in your home folder using your preffered text editor...</p>
+
+<p><code>
+vi ~/.rvmrc
+</code></p>
+
+<p>and here's what I use to get you started.</p>
+
+<p><code>bash Sample of my .rvmrc file
+rvm_gem_options="--no-rdoc --no-ri"
+rvm_archflags="-arch x86_64" #useful for avoiding errors with natively
+compiled gems
+rvm_make_flags="-j 3" # Where 2 is the number of cores + 1
+</code></p>
+
+<p>See here <a href="http://hints.macworld.com/article.php?story=20070524074057479">about optimising your make builds</a>. It's not guaranteed to help but it doesn't hurt either.</p>
+
+<h2>6) Save time in development mode with the Active Reload gem</h2>
+
+<p>Given that this has made its way into the Rails core now, its fair to
+say the developer was onto something. Instead of requiring the zillion
+core files of Rails on every page view in development mode, this Gem
+cleverly only pulls in the ones that have changed based on their
+timestamp. <a href="https://github.com/paneq/active_reload">You can check out the gem here</a> or just add the following to your Gemfile;</p>
+
+<p>```
+  group :development do</p>
+
+<pre><code>gem 'active_reload'
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>and then run bundle. Works really well on big Rails apps like Spree and
+Radiant.</p>
+
+<h2>7) Get a f***ing SSD</h2>
+
+<p>Not that it's strictly a Rails dev thing, but this video from <a href="http://www.fastly.com/">Fastly</a> CEO
+Artur Bergman presents a "compelling" argument for why you need an SSD
+in your life.</p>
+
+<p><video width='' height='' preload='none' controls poster=''><source src='/H7PJ1oeEyGg' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/></video></p>
+
+<p>That's it for now. Any other suggestions please stick them in a comment
+or get me on twitter.</p>
+]]></content>
+  </entry>
+  
+</feed>
