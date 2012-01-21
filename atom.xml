@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Xavier Riley ||= Web Developer, Guildford]]></title>
-  <link href="http://xavriley.github.com/atom.xml" rel="self"/>
-  <link href="http://xavriley.github.com/"/>
-  <updated>2012-01-21T17:26:33+00:00</updated>
-  <id>http://xavriley.github.com/</id>
+  <link href="http://xavierriley.co.uk/atom.xml" rel="self"/>
+  <link href="http://xavierriley.co.uk/"/>
+  <updated>2012-01-21T17:28:29+00:00</updated>
+  <id>http://xavierriley.co.uk/</id>
   <author>
     <name><![CDATA[Xavier Riley]]></name>
     <email><![CDATA[info@xavierriley.co.uk]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transferring Customers From Prestashop To Magento]]></title>
-    <link href="http://xavriley.github.com/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/"/>
+    <link href="http://xavierriley.co.uk/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/"/>
     <updated>2010-09-03T00:00:00+01:00</updated>
-    <id>http://xavriley.github.com/blog/2010/09/03/transferring-customers-from-prestashop-to-magento</id>
+    <id>http://xavierriley.co.uk/blog/2010/09/03/transferring-customers-from-prestashop-to-magento</id>
     <content type="html"><![CDATA[<p>There’s always debate about which ecommerce platform is harder/better/faster/stronger, and from experience of Prestashop and Magento I can say they’re both really good for different types of shops. For <a href="http::www.forsyths.co.uk/">Forsyths</a>, I developed a Prestashop solution for their Sheet Music department whilst I was working there and it’s been great so far but…</p>
 
 <p><del>When picking a solution it really pays to do some forward planning and in this case, Prestashop can’t scale up to the kind of multi-store functionality that this music department store needed. That said, it was a lot easier getting a Prestashop store off the ground (I tried both at the start) and it’s served us well. My only gripe is that Prestashop’s module and templating system isn’t flexible enough to make real changes without editing the core – and that screws up future updates. Not what you need for ecommerce purposes.</del></p>
