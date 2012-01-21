@@ -1,11 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            http://xavriley.github.com/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/
+        </loc>
+        <lastmod>2012-01-21T17:12:57+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://xavriley.github.com/blog/archives/</loc>
-        <lastmod>2012-01-19T22:49:40+00:00</lastmod>
+        <lastmod>2012-01-21T17:12:57+00:00</lastmod>
     </url>
     <url>
         <loc>http://xavriley.github.com/</loc>
-        <lastmod>2012-01-19T22:49:40+00:00</lastmod>
+        <lastmod>2012-01-21T17:12:57+00:00</lastmod>
     </url>
 </urlset>
