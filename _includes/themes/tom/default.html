@@ -31,28 +31,25 @@
   
     <div class="footer">
       <div class="contact">
-        <p>
-          {{ site.author.name }}<br />
-          tagline<br />
-          {{ site.author.email }}
-        </p>
+        <blockquote>
+          <br />
+          &ldquo;Tell me Mr Waller, what is swing?&rdquo; Fats reached
+          for his drink with one hand, mopped his face with the other,
+          looked the woman squarely and replied &ldquo;Lady, if you
+          gotta ask, you ain&rsquo;t got it!&rdquo; - Art Tatum<br />
+        </blockquote>
       </div>
       <div class="contact">
         <p>
-          <a href="http://github.com/{{ site.author.github }}/">github.com/{{ site.author.github }}</a><br />
-          <a href="http://twitter.com/{{ site.author.twitter }}/">twitter.com/{{ site.author.twitter }}</a><br />
-          <a href="http://flickr.com/photos/username/">flickr.com/photos/username</a>
+        <a
+          href="http://github.com/{{site.author.github}}/">github.com/{{site.author.github}}</a><br />
+        <a href="http://twitter.com/{{site.author.twitter}}/">twitter.com/{{site.author.twitter}}</a><br />
         </p>
-      </div>
-      <div class="rss">
-        <a href="http://feeds.feedburner.com/username">
-          <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
-        </a>
       </div>
     </div>
   </div>
-  <a href="http://github.com/{{ site.author.github }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
-
+  <!-- <a href="http://github.com/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>-->
+    
 {% if site.safe %}
   {% include production/analytics.html %}
 {% endif %}

@@ -9,14 +9,13 @@ var:
   tags_path : /tags.html
   rss_path: /atom.xml
 
-production_url : http://username.github.com # or your custom domain name
-title : Jekyll Boostrap
+production_url : http://www.xavierriley.co.uk # or your custom domain name
+title : "Xavier Riley <code>||=</code> Web Developer, Guildford"
 
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedbuder : feedname
+  name : "Xavier Riley"
+  email : info@xavierriley.co.uk
+  github : xavriley
+  twitter : xavriley
 
 exclude: .rbenv-version
