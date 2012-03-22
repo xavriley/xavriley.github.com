@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>7 Ways to speed up your Ruby Dev Environment - Xavier Riley ||= Web Developer, Guildford</title>
+  <meta name="author" content="Xavier Riley">
+
+  
+  <meta name="description" content="Zach Holman gave a great talk recently in which he pretty much summed up my feelings about Ruby in one of his slides; &#8220;Ruby is so fast, I love &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Xavier Riley ||= Web Developer, Guildford" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21587005-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Xavier Riley ||= Web Developer, Guildford</a></h1>
+  
+    <h2>Stuff about Ruby, Prestashop, Vim and Music</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:xavierriley.co.uk" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">7 Ways to Speed Up Your Ruby Dev Environment</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-21T20:01:00+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://zacholman.com">Zach Holman</a> <a href="http://zachholman.com/talk/how-github-uses-github-to-build-github">gave a great talk recently</a> in which he pretty much summed up my feelings about Ruby in one of his slides;</p>
+
+<blockquote><p>&#8220;Ruby is so fast, I love it so much. Not computationally speaking of
+course, cos in that sense its slow as f&#8230;&#8221;</p></blockquote>
+
+<p>That said, if you&#8217;re working with it all day it pays to get it working
+as fast as you can so here&#8217;s some stuff I&#8217;ve cobbled together in the
+hope that it speeds up your dev workflow.</p>
+
+<h2>1) Use bundler &#8211;pre</h2>
+
+<p>If you&#8217;re waiting forever for gems to install with bundler, make sure
+you&#8217;re using the new 1.1 rc. Not convinced?</p>
+
+<p>If you want to read up on why it&#8217;s so much faster <a href="http://patshaughnessy.net/2011/10/14/why-bundler-1-1-will-be-much-faster">there&#8217;s a great write
+up by Pat Shaughnessy over here</a></p>
+
+<h2>2) Ride the Unicorn</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install unicorn
+</span><span class='line'>unicorn_rails</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&#8217;ve found <a href="http://patshaughnessy.net/2011/10/14/why-bundler-1-1-will-be-much-faster">Unicorn</a> to be a better server for local development compared
+with mongrel or thin. Works with any Rack based applications too.</p>
+
+<h2>3) Make Vhosts config a thing of the past with Pow!!</h2>
+
+<blockquote><p><a href="http://pow.cx/">Pow</a> is a zero-config Rack server for Mac OS X. Have it serving your apps locally in under a minute.</p></blockquote>
+
+<p>If you&#8217;re managing multiple sites (as most devs are) Pow is a useful
+server to have for Rack and Rails apps. Getting a site set up is as
+simple as symlinking into a folder and it&#8217;s ready to view at foobar.dev</p>
+
+<p>That said, I found it to be a bit of a pain running alongside a local
+Apache install (for PHP sites) as it screwed with the /etc/hosts. That
+was until I discovered <a href="https://github.com/Rodreegez/powder.git">Powder</a>
+which gives you some shell commands for getting Pow!! to play nicely
+with the other servers.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem install powder
+</span><span class='line'>powder link # Symlinks the current folder
+</span><span class='line'>powder applog # Tails the current application logfile
+</span><span class='line'>
+</span><span class='line'># My personal favourites
+</span><span class='line'>powder up   # Enable pow
+</span><span class='line'>powder down # Disable pow</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>4) Speed up your Rails boot time with Ruby 1.9.3 or 1.9.2-head</h2>
+
+<p>My namesake <a href="http://rhnh.net/2011/05/28/speeding-up-rails-startup-time">Xavier Shay identified a big win in speeding up how Rails
+requires
+files.</a>. The
+patch subsequently made it into Ruby 1.9.3 and a 1.9.2 patch, but it
+doesn&#8217;t affect the earlier 1.8.7 or Ree. If you haven&#8217;t done it already,
+update using the following commands (assuming you&#8217;re using RVM).</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rvm get head
+</span><span class='line'>rvm install 1.9.3
+</span><span class='line'>## or
+</span><span class='line'>rvm install 1.9.2-head</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Enjoy the faster boot times.</p>
+
+<h2>5) Speed up all your Gem installations by using your .rvmrc file</h2>
+
+<p>RVM can have global settings specified in a .rvmrc file. My preference
+is to do without the ri and rdoc when I&#8217;m installing a gem, as I&#8217;m
+pretty happy being able to either look it up or install when needed. You
+can do the same with the following commands. First off, create the file
+in your home folder using your preffered text editor&#8230;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vi ~/.rvmrc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and here&#8217;s what I use to get you started.</p>
+
+<figure class='code'><figcaption><span>Sample of my .rvmrc file </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">rvm_gem_options</span><span class="o">=</span><span class="s2">&quot;--no-rdoc --no-ri&quot;</span>
+</span><span class='line'><span class="nv">rvm_archflags</span><span class="o">=</span><span class="s2">&quot;-arch x86_64&quot;</span> <span class="c">#useful for avoiding errors with natively</span>
+</span><span class='line'>compiled gems
+</span><span class='line'><span class="nv">rvm_make_flags</span><span class="o">=</span><span class="s2">&quot;-j 3&quot;</span> <span class="c"># Where 2 is the number of cores + 1</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>See here <a href="http://hints.macworld.com/article.php?story=20070524074057479">about optimising your make builds</a>. It&#8217;s not guaranteed to help but it doesn&#8217;t hurt either.</p>
+
+<h2>6) Save time in development mode with the Active Reload gem</h2>
+
+<p>Given that this has made its way into the Rails core now, its fair to
+say the developer was onto something. Instead of requiring the zillion
+core files of Rails on every page view in development mode, this Gem
+cleverly only pulls in the ones that have changed based on their
+timestamp. <a href="https://github.com/paneq/active_reload">You can check out the gem here</a> or just add the following to your Gemfile;</p>
+
+<figure class='code'><figcaption><span>Sample of my .rvmrc file </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  group :development <span class="k">do</span>
+</span><span class='line'><span class="k">    </span>gem <span class="s1">&#39;active_reload&#39;</span>
+</span><span class='line'>  end
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then run bundle. Works really well on big Rails apps like Spree and
+Radiant.</p>
+
+<h2>7) Get a f***ing SSD</h2>
+
+<p>Not that it&#8217;s strictly a Rails dev thing, but this video from <a href="http://www.fastly.com/">Fastly</a> CEO
+Artur Bergman presents a &#8220;compelling&#8221; argument for why you need an SSD
+in your life.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/H7PJ1oeEyGg" frameborder="0" allowfullscreen></iframe>
+
+
+<p>That&#8217;s it for now. Any other suggestions please stick them in a comment
+or get me on twitter.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Xavier Riley</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-21T20:01:00+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/" data-via="xavriley" data-counturl="http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="small"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/" title="Previous Post: Transferring Customers From Prestashop To Magento">&laquo; Transferring Customers From Prestashop To Magento</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/02/13/a-day-without-work-dot-dot-dot/" title="next Post: A day without work...">A day without work... &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/13/a-day-without-work-dot-dot-dot/">A day without work...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/">7 Ways to speed up your Ruby Dev Environment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/">Transferring Customers From Prestashop To Magento</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/xavierRiley">@xavierRiley</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'xavierRiley',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("xavriley", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/xavriley" class="twitter-follow-button" data-show-count="false">Follow @xavriley</a>
+  
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/xavriley?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/xavriley">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/105297353634459881009?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Xavier Riley -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xavierriley';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/';
+        var disqus_url = 'http://xavierriley.co.uk/blog/2012/01/21/7-ways-to-speed-up-your-ruby-dev-environment/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

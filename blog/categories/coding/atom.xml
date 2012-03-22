@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coding | Xavier Riley ||= Web Developer, Guildford]]></title>
+  <link href="http://xavierriley.co.uk/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://xavierriley.co.uk/"/>
+  <updated>2012-02-13T22:17:58+00:00</updated>
+  <id>http://xavierriley.co.uk/</id>
+  <author>
+    <name><![CDATA[Xavier Riley]]></name>
+    <email><![CDATA[info@xavierriley.co.uk]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A day without work...]]></title>
+    <link href="http://xavierriley.co.uk/blog/2012/02/13/a-day-without-work-dot-dot-dot/"/>
+    <updated>2012-02-13T22:02:00+00:00</updated>
+    <id>http://xavierriley.co.uk/blog/2012/02/13/a-day-without-work-dot-dot-dot</id>
+    <content type="html"><![CDATA[<blockquote><p>A day without work is a day without food</p></blockquote>
+
+<p>Zen saying. Heavy.</p>
+
+<p>Came across this in this great post - <a href="http://www.grobmeier.de/the-10-rules-of-a-zen-programmer-03022012.html">The 10 rules of a Zen programmer</a></p>
+]]></content>
+  </entry>
+  
+</feed>
