@@ -19,3 +19,4 @@ author :
   twitter : xavriley
 
 exclude: .rbenv-version
+markdown: rdiscount
