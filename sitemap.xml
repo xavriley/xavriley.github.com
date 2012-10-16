@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>
+            http://www.xavierriley.co.uk/blog/2010/09/03/transferring-customers-from-prestashop-to-magento/
+        </loc>
+        <lastmod>2012-10-16T13:58:07+01:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://www.xavierriley.co.uk/blog/2012/10/12/test-driving-prestashop-with-behat/
+        </loc>
+        <lastmod>2012-10-16T14:11:47+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.xavierriley.co.uk/blog/archives/</loc>
+        <lastmod>2012-10-16T14:11:47+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.xavierriley.co.uk/</loc>
+        <lastmod>2012-10-16T14:11:47+01:00</lastmod>
+    </url>
+</urlset>
