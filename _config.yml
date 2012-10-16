@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://xavriley.github.com
-title: My Octopress Blog
+url : http://www.xavierriley.co.uk # or your custom domain name
+title : "Xavier Riley <code>||=</code> Web Developer, Guildford"
+
 subtitle: A blogging framework for hackers.
-author: Your Name
 simple_search: http://google.com/search
-description:
+description: I'm a Ruby/PHP developer working for Kyan in Guildford, UK.
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -19,7 +19,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+# email:
 
 # ----------------------- #
 #    Jekyll & Plugins     #
@@ -34,7 +34,7 @@ plugins: plugins
 code_dir: downloads/code
 category_dir: blog/categories
 markdown: rdiscount
-pygments: false # default python pygments have been replaced by pygments.rb
+pygments: true # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
@@ -58,13 +58,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/twitter.ht
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: xavriley
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: xavriley
 twitter_tweet_count: 4
 twitter_show_replies: false
 twitter_follow_button: true
@@ -72,12 +72,12 @@ twitter_show_follower_count: false
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user:
+googleplus_user: 110588431429571947779
 googleplus_hidden: false
 
 # Pinboard
@@ -85,15 +85,15 @@ pinboard_user:
 pinboard_count: 3
 
 # Delicious
-delicious_user:
+delicious_user: xavriley
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: xavriley
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-21587005-1
 
 # Facebook Like
 facebook_like: false
