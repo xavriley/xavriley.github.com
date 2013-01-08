@@ -168,9 +168,11 @@ Feature: Basket
 1 scenario (1 undefined)
 4 steps (4 undefined)
 0m0.039s
+```
 
 You can implement step definitions for undefined steps with these snippets:
 
+```gherkin
     /**
      * @Given /^I am on a product page$/
      */
