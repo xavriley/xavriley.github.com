@@ -2,7 +2,7 @@
 layout: post
 title: "Test driving Prestashop with Behat, Mink and Selenium - Step by step"
 comments: true
-category: [php, prestashop] 
+category: prestashop
 tags: [php, prestashop, TDD, acceptance testing, cucumber, behat, mink, selenium, tutorial]
 published: true
 ---
