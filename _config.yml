@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url : http://www.xavierriley.co.uk # or your custom domain name
-title : "Xavier Riley <code>||=</code> Web Developer, Guildford"
+title : "Xavier Riley - Web Developer, Guildford"
 
-subtitle: A blogging framework for hackers.
+subtitle: 1 Tbsp Ruby, 1/2 tsp Clojure (for flavour) and a pinch of PHP
 simple_search: http://google.com/search
-description: I'm a Ruby/PHP developer working for Kyan in Guildford, UK.
+description: "I'm a Ruby/Rails developer working for Kyan in Guildford, UK. I read a lot and write a little."
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
