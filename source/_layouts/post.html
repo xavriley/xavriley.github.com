@@ -8,9 +8,10 @@ single: true
 	{% include post/sharing.html %}
 {% endunless %}
 {% if site.disqus_short_name and page.comments == true %}
+{% include disqus.html %}
 <section id="comment">
     <h1 class="title">Comments</h1>
-    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+    <div id="disqus_thread" aria-live="polite"></div>
 </section>
 {% endif %}
 {% include goodreads.html %}
