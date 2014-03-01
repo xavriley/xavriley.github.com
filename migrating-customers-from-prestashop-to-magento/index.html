@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Migrating customers from Prestashop to Magento</title>
+	    <meta name="description" content="" />
+	    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+	    <link rel="stylesheet" type="text/css" href="../assets/js/vendor/highlight/styles/tomorrow.css" />
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <meta name="generator" content="Ghost 0.4" />
+<link rel="alternate" type="application/rss+xml" title="Xavier Riley" href="../rss/index.html">
+<link rel="canonical" href="http://my-ghost-blog.com/migrating-customers-from-prestashop-to-magento/" />
+	    <script type='text/javascript'>//<![CDATA[
+	    	var disqus = {
+	    		'activate' : true,
+	    		'shortname' : 'xavierriley'
+	    	};
+	    //]]></script>
+    </head>
+    <body class="post-template tag-php-prestashop">
+        <div class="site">
+
+	    	
+<header class="sidebar-header">
+
+    <div class="first">
+        <div class="header-content">
+            <a class="blog-title" href="http://my-ghost-blog.com" title="Xavier Riley">
+                Xavier Riley
+                <span class="byline">Blogging about programming, companies and music.</span>
+            </a>
+            <div class="social-icons" style="display: block !important;">
+              <a href="http://twitter.com/xavriley" title="Find me on twitter">k</a>
+              <a href="http://youtube.com/xavriley" target="_blank" title="Find me on youtube">o</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="second">
+        <a class="expander" title="Show menu">
+        	<div class="expand"><span class="icon"></span>Menu</div>
+        	<div class="collapse"><span class="icon collapse"></span>Collapse</div>
+        </a>
+		<!--div class="cover-wrapper">
+			<img class="cover" src="" alt="" title="" />
+		</div-->
+        <ul class="main-menu">
+                <li class="menu-item">
+                    <a href="http://my-ghost-blog.com">Home</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://opencorporates.com" target="_blank">Work: OpenCorporates</a>
+                </li>
+            </ul>
+    </div>
+
+</header>
+
+
+<section class="page-content primary" role="main">
+
+	
+
+		<article id="post-3" class="post post tag-php-prestashop" role="article" itemscope itemtype="http://schema.org/Article">
+
+			<div class="post-thumbnail">
+		    	<p></p>
+		    </div>
+
+		    <div class="content-wrapper">
+			    <h2 class="post-title">
+			    	Migrating customers from Prestashop to Magento
+			    </h2>
+
+			    <div class="post-meta">
+					Posted
+					<span datetime="2009-09-03" itemprop="datePublished">
+						03 Sep 09
+					</span>
+				</div>
+
+			    <div class="post-content" itemprop="articleBody">
+
+					<p>There’s always debate about which ecommerce platform is harder/better/faster/stronger, and from experience of Prestashop and Magento I can say they’re both really good for different types of shops. For <a href="http::www.forsyths.co.uk/">Forsyths</a>, I developed a Prestashop solution for their Sheet Music department whilst I was working there and it’s been great so far but…</p>
+
+<p><del>When picking a solution it really pays to do some forward planning and in this case, Prestashop can’t scale up to the kind of multi-store functionality that this music department store needed. That said, it was a lot easier getting a Prestashop store off the ground (I tried both at the start) and it’s served us well. My only gripe is that Prestashop’s module and templating system isn’t flexible enough to make real changes without editing the core – and that screws up future updates. Not what you need for ecommerce purposes.</del></p>
+
+<p><em>UPDATE</em> <br />
+Since writing this, it's all change with Prestashop v1.5 <br />
+They've had a basic overrides system in place for a while now. <br />
+Also the new version supports multistore but I haven't used it, yet...</p>
+
+<h2 id="makingtheswitch">Making the switch</h2>
+
+<p>Swapping out the products from PS to Mage is pretty straightforward – it’s just a case of a mysql query which maps them into the right fields. As with any Magento import the process is more or less similar;</p>
+
+<ul>
+<li>Add some dummy data into Magento, using all the fields you’re likely to use</li>
+<li>Export the data as a csv using System > Import/Export > Profiles</li>
+<li>Look at the file in your var/export folder and take a look at the headers</li>
+</ul>
+
+<p>Tip for *nix users working with csv files – in terminal use the following command to save the first two lines to a file;</p>
+
+<pre><code class="shell">head -n 2 your_csv_file.csv &gt; your_csv_file_head.csv  
+</code></pre>
+
+<p>That’s if your csv file is really big.</p>
+
+<h2 id="theproblemwithusers">The problem with users</h2>
+
+<p>Now the above works fine for most things, but the problem with users lies in the different authentication that both shops use. Magento uses MD5 with a salt on the end, Prestashop uses a ‘Cookie Key’ prefix to the customer password, which is then MD5 encrypted. <br />
+Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse an MD5 into plain text, therefore you can’t get the original password strings in order to re-encode them (which is actually a good thing…).</p>
+
+<h2 id="howtofixit">How to fix it</h2>
+
+<p>Clearly its impossible to convert from one MD5 hash to another so we have to try something different. Make the following file;</p>
+
+<pre><code>(magentoroot)/app/code/local/Mage/Customer/Model/Customer.php
+</code></pre>
+
+<p>and in it put the following;</p>
+
+<pre><code class="php">class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract  
+{
+/**
+* Authenticate customer
+*
+* @param string $login
+* @param string $password
+* @return true
+* @throws Exception
+*/
+public function authenticate($login, $password)  
+{
+
+$this-&gt;loadByEmail($login);
+if ($this-&gt;getConfirmation() &amp;&amp; $this-&gt;isConfirmationRequired()) {  
+throw Mage::exception('Mage_Core', Mage::helper('customer')-&gt;__('This account is not confirmed.'),  
+self::EXCEPTION_EMAIL_NOT_CONFIRMED  
+);
+}
+if (!$this-&gt;validatePassword($password) &amp;&amp; !$this-&gt;validatePassword('hKvthisisyourgibberishcookiestringfromprestashopCM'.$password)) {  
+throw Mage::exception('Mage_Core', Mage::helper('customer')-&gt;__('Invalid login or password.'),  
+self::EXCEPTION_INVALID_EMAIL_OR_PASSWORD  
+);
+}
+Mage::dispatchEvent('customer_customer_authenticated', array(  
+'model' =&gt; $this,  
+'password' =&gt; $password,  
+));
+return true;  
+}
+
+//end class
+}
+}
+</code></pre>
+
+<p>Notice the random string prepended to the password variable? That’s your cookie string which you’ll find in your Prestashop install here;</p>
+
+<pre><code>(prestshop root)/config/settings.inc.php
+</code></pre>
+
+<p>It’s the line beginning</p>
+
+<pre><code class="php">define('_COOKIE_KEY_', 'ThisIsTheBitYouWant...'  
+</code></pre>
+
+<p>Believe it or not that’s all you need to do. Import your MD5 hashes from Prestashop straight into Magento and it’ll authenticate them as Prestashop would do. I’ll go through the mysql import in another post.</p>
+
+				</div>
+
+			    <aside class="post-aside">
+
+					<div id="disqus_thread" class="comments"></div>
+					<script type="text/javascript">//<![CDATA[
+						if ( disqus.activate ) {
+						    var disqus_shortname = disqus.shortname;
+							var disqus_identifier = '3';
+
+						    /* * * DON'T EDIT BELOW THIS LINE * * */
+						    (function () {
+								var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+								dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+								(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+							}());
+					    }
+					//]]></script>
+
+			    </aside>
+
+			</div>
+
+		</article>
+
+	
+
+	<div class="site-footer">
+	<div class="footer-text">&copy; Copyright 2014 <a href="../index.html">Xavier Riley</a>, all rights reserved. Proudly published with <a href="http://tryghost.org" target="_blank">Ghost</a> and <a href="http://themeforest.net/item/plattan-responsive-flat-and-clean-ghost-theme/6882608">Plattan</a> theme.</div>
+</div>
+
+
+</section>
+
+
+	    </div>
+
+	    <script src="../shared/vendor/jquery/jquery.js?v=0d5e549fe6"></script>
+
+	    <script type='text/javascript' src='../assets/js/scripts.min.js'></script>
+	    <script type='text/javascript' src='../assets/js/vendor/highlight/highlight.pack.js'></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21587005-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+      </script>
+
+	</body>
+</html>

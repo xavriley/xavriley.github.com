@@ -1,82 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://my-ghost-blog.com/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Sat, 01 Mar 2014 17:25:43 GMT</lastBuildDate><atom:link href="http://my-ghost-blog.com/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[(Re)Starting a blog with Ghost]]></title><description><![CDATA[<p>I like to ramble on as much as the next person, but up till now it's mostly been offline. To save my wife from hearing me talk about programming and tax law I'm making like it's 2004 and (re)starting a blog. Properly this time. Like with actual content and everything.</p>
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Test driving Prestashop with Behat, Mink and Selenium - Step by step</title>
+	    <meta name="description" content="" />
+	    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+	    <link rel="stylesheet" type="text/css" href="../assets/js/vendor/highlight/styles/tomorrow.css" />
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <meta name="generator" content="Ghost 0.4" />
+<link rel="alternate" type="application/rss+xml" title="Xavier Riley" href="../rss/index.html">
+<link rel="canonical" href="http://my-ghost-blog.com/test-driving-prestashop-with-behat-mink-and-selenium-step-by-step/" />
+	    <script type='text/javascript'>//<![CDATA[
+	    	var disqus = {
+	    		'activate' : true,
+	    		'shortname' : 'xavierriley'
+	    	};
+	    //]]></script>
+    </head>
+    <body class="post-template tag-php-prestashop-tdd-acceptance-testing-cucumber-behat-mink-selenium-tutorial">
+        <div class="site">
 
-<h3 id="discoveringghost">Discovering Ghost</h3>
+	    	
+<header class="sidebar-header">
 
-<p>For past blogging attempts I've used Wordpress (easy) and Jekyll (hackable) and neither were much fun. As a developer I want something that's easy <em>and</em> hackable and I'm hoping that the node based Ghost fits the bill.</p>
+    <div class="first">
+        <div class="header-content">
+            <a class="blog-title" href="http://my-ghost-blog.com" title="Xavier Riley">
+                Xavier Riley
+                <span class="byline">Blogging about programming, companies and music.</span>
+            </a>
+            <div class="social-icons" style="display: block !important;">
+              <a href="http://twitter.com/xavriley" title="Find me on twitter">k</a>
+              <a href="http://youtube.com/xavriley" target="_blank" title="Find me on youtube">o</a>
+            </div>
+        </div>
+    </div>
 
-<p>I get to write Markdown (win) with a nice javascript-based preview window, and the posts save to an SQLite database. </p>
+    <div class="second">
+        <a class="expander" title="Show menu">
+        	<div class="expand"><span class="icon"></span>Menu</div>
+        	<div class="collapse"><span class="icon collapse"></span>Collapse</div>
+        </a>
+		<!--div class="cover-wrapper">
+			<img class="cover" src="" alt="" title="" />
+		</div-->
+        <ul class="main-menu">
+                <li class="menu-item">
+                    <a href="http://my-ghost-blog.com">Home</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://opencorporates.com" target="_blank">Work: OpenCorporates</a>
+                </li>
+            </ul>
+    </div>
 
-<h4 id="installation">Installation</h4>
+</header>
 
-<pre><code>wget https://ghost.org/zip/ghost-0.4.1.zip
-unzip ghost-0.4.1.zip
-cd ghost-0.4.1
-brew update
-brew install node
-npm install --production
-npm start
-</code></pre>
 
-<p>Very nice!</p>
+<section class="page-content primary" role="main">
 
-<h4 id="hosting">Hosting</h4>
+	
 
-<p>I'd been hosting up to now on Github pages which to be honest has been a giant PITA (mainly because of issues with Octopress). I'm looking at moving to Heroku but in the interests of getting up and running quickly, I used <a href='https://github.com/axitkhurana/buster' >buster</a> to generate a static site from my local Ghost install.</p>
+		<article id="post-2" class="post post tag-php-prestashop-tdd-acceptance-testing-cucumber-behat-mink-selenium-tutorial" role="article" itemscope itemtype="http://schema.org/Article">
 
-<pre><code>sudo pip install buster
-buster setup --gh-repo=git@github.com:xavriley/xavriley.github.com.git
-buster generate --domain=http://localhost:2368
-buster preview # browse localhost:9000 to check
-buster add-domain xavierriley.co.uk
-buster deploy
-</code></pre>
+			<div class="post-thumbnail">
+		    	<p></p>
+		    </div>
 
-<p>Except in my case <code>buster deploy</code> failed because of my existing Octopress blog in that repo. After taking a fresh clone to backup the old blog, I deployed by:</p>
+		    <div class="content-wrapper">
+			    <h2 class="post-title">
+			    	Test driving Prestashop with Behat, Mink and Selenium - Step by step
+			    </h2>
 
-<pre><code>cd  static # where buster makes it's repo
-git push -f origin master
-</code></pre>
+			    <div class="post-meta">
+					Posted
+					<span datetime="2012-12-12" itemprop="datePublished">
+						12 Dec 12
+					</span>
+				</div>
 
-<p>which <em>blows away the old repo</em> and lets me deploy normally from then on.</p>
+			    <div class="post-content" itemprop="articleBody">
 
-<h5 id="forbonuspoints">For bonus points</h5>
-
-<p>To make the deploy process smoother, try running:</p>
-
-<pre><code>sudo sh -c 'echo "127.0.0.1 local.tryghost.org" &gt;&gt; /etc/hosts'
-</code></pre>
-
-<p>to be able to run <code>buster generate</code> with no extra args.</p>
-
-<h4 id="conclusion">Conclusion</h4>
-
-<p>From discovering Ghost to deploying to Github pages took about 15 minutes and I didn't have any issue that held me up for more than about 10 seconds. Now I've been programming professionally for the last six years and I can honestly say <a href='http://joearms.github.io/2014/02/07/why-programming-is-difficult.html' >that doesn't happen very often</a>.</p>]]></description><link>http://my-ghost-blog.com/blogging-with-ghost-buster-and-github-pages/</link><guid isPermaLink="false">e4bf4dbf-a9c8-4452-9e33-f20d07c94a47</guid><category><![CDATA[Getting Started]]></category><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Sat, 01 Mar 2014 14:15:32 GMT</pubDate></item><item><title><![CDATA[Test driving Prestashop with Behat, Mink and Selenium - Step by step]]></title><description><![CDATA[<p>Whilst I don't do so much PHP development nowdays, I've been watching <br />
+					<p>Whilst I don't do so much PHP development nowdays, I've been watching <br />
 the current rennaissance with interest. PHP is taking note of trends <br />
 being pushed by the Rails world with "clean and classy" frameworks such <br />
-as <a href='http://laravel.com/' >Laravel</a> and best practice manifestos like <a href='http://www.phptherightway.com/' >PHP the right <br />
+as <a href="http://laravel.com/">Laravel</a> and best practice manifestos like <a href="http://www.phptherightway.com/">PHP the right <br />
 way</a> coming to light. This is all good <br />
 news for the web because better quality code (whatever language it's <br />
 written in) raises the bar all round. </p>
 
 <p>That said, there still seems to be a lack of good documentation <br />
 concerning proper Behaviour Driven Development (BDD) with PHP and it's a <br />
-problem that we came across recently at <a href='http://kyan.com/' >Kyan</a>. I'm going to try and do a <br />
+problem that we came across recently at <a href="http://kyan.com">Kyan</a>. I'm going to try and do a <br />
 walkthrough of setting up some simple fetaure testing using a default <br />
-install of the <a href='http://www.prestashop.com/' >Prestashop</a> ecommerce <br />
+install of the <a href="http://www.prestashop.com">Prestashop</a> ecommerce <br />
 framework. It's a fairly sizeable project that doesn't ship with test <br />
 coverage - let's fix that!</p>
 
 <h2 id="whatyoullneed">What you'll need</h2>
 
 <ul>
-<li>A local install of <a href='http://www.prestashop.com/' >Prestashop</a></li>
-<li><a href='http://www.mozilla.org/en-US/firefox/new/' >Firefox</a> (just the standard consumer version, not Aurora or nightly)</li>
-<li><a href='http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar' >Selenium RC (2.25.0 at the time of writing)</a></li>
+<li>A local install of <a href="http://www.prestashop.com">Prestashop</a></li>
+<li><a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> (just the standard consumer version, not Aurora or nightly)</li>
+<li><a href="http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar">Selenium RC (2.25.0 at the time of writing)</a></li>
 <li><p>PHP 5.4 (just so we're all on the same page)</p></li>
-<li><p><a href='http://behat.org/' >Behat (a PHP testing framework)</a> </p></li>
-<li><a href='http://mink.behat.org/' >Mink (web acceptance testing for Behat)</a> </li>
-<li><a href='http://getcomposer.org/' >Composer (a PHP packaging tool - think Bundler for PHP)</a> </li>
+<li><p><a href="http://behat.org/">Behat (a PHP testing framework)</a> </p></li>
+<li><a href="http://mink.behat.org/">Mink (web acceptance testing for Behat)</a> </li>
+<li><a href="http://getcomposer.org/">Composer (a PHP packaging tool - think Bundler for PHP)</a> </li>
 </ul>
 
 <p>&nbsp;</p>
@@ -253,10 +286,10 @@ curly brace. After saving and running <code>bin/behat</code> again, the output s
 
 <p>This is where the documentation starts to part ways with the latest <br />
 versions of Mink and Behat. After struggling with the official run <br />
-through at <a href='http://mink.behat.org/' >http://mink.behat.org/</a> trying to <br />
+through at <a href="http://mink.behat.org/">http://mink.behat.org/</a> trying to <br />
 get Zombie working as the Javascript client, I stumbled across the Mink <br />
 example repository in the Behat official Github page here <br />
-<a href='https://github.com/Behat/MinkExtension-example' >https://github.com/Behat/MinkExtension-example</a></p>
+<a href="https://github.com/Behat/MinkExtension-example">https://github.com/Behat/MinkExtension-example</a></p>
 
 <p>The key is swapping out <code>BehatContext</code> in the <code>FeaturesContext</code> file, to <br />
 make sure that it reads;</p>
@@ -380,90 +413,61 @@ that are available and also to hear what people think of <br />
 this one. I'll finish by saying I'm starting out on this trail so my advice <br />
 is only what I've managed to cobble together up to now. If there's <br />
 improvements or suggestions in the comments I'll happily fold them back in to <br />
-the main post. Happy testing...</p>]]></description><link>http://my-ghost-blog.com/test-driving-prestashop-with-behat-mink-and-selenium-step-by-step/</link><guid isPermaLink="false">7ee0d4e7-8147-4a94-ae2b-63e29c9747cc</guid><category><![CDATA[php, prestashop, TDD, acceptance testing, cucumber, behat, mink, selenium, tutorial]]></category><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Wed, 12 Dec 2012 12:00:00 GMT</pubDate></item><item><title><![CDATA[Migrating customers from Prestashop to Magento]]></title><description><![CDATA[<p>There’s always debate about which ecommerce platform is harder/better/faster/stronger, and from experience of Prestashop and Magento I can say they’re both really good for different types of shops. For <a href='http://my-ghost-blog.com/:www.forsyths.co.uk/' >Forsyths</a>, I developed a Prestashop solution for their Sheet Music department whilst I was working there and it’s been great so far but…</p>
+the main post. Happy testing...</p>
 
-<p><del>When picking a solution it really pays to do some forward planning and in this case, Prestashop can’t scale up to the kind of multi-store functionality that this music department store needed. That said, it was a lot easier getting a Prestashop store off the ground (I tried both at the start) and it’s served us well. My only gripe is that Prestashop’s module and templating system isn’t flexible enough to make real changes without editing the core – and that screws up future updates. Not what you need for ecommerce purposes.</del></p>
+				</div>
 
-<p><em>UPDATE</em> <br />
-Since writing this, it's all change with Prestashop v1.5 <br />
-They've had a basic overrides system in place for a while now. <br />
-Also the new version supports multistore but I haven't used it, yet...</p>
+			    <aside class="post-aside">
 
-<h2 id="makingtheswitch">Making the switch</h2>
+					<div id="disqus_thread" class="comments"></div>
+					<script type="text/javascript">//<![CDATA[
+						if ( disqus.activate ) {
+						    var disqus_shortname = disqus.shortname;
+							var disqus_identifier = '2';
 
-<p>Swapping out the products from PS to Mage is pretty straightforward – it’s just a case of a mysql query which maps them into the right fields. As with any Magento import the process is more or less similar;</p>
+						    /* * * DON'T EDIT BELOW THIS LINE * * */
+						    (function () {
+								var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+								dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+								(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+							}());
+					    }
+					//]]></script>
 
-<ul>
-<li>Add some dummy data into Magento, using all the fields you’re likely to use</li>
-<li>Export the data as a csv using System > Import/Export > Profiles</li>
-<li>Look at the file in your var/export folder and take a look at the headers</li>
-</ul>
+			    </aside>
 
-<p>Tip for *nix users working with csv files – in terminal use the following command to save the first two lines to a file;</p>
+			</div>
 
-<pre><code class="shell">head -n 2 your_csv_file.csv &gt; your_csv_file_head.csv  
-</code></pre>
+		</article>
 
-<p>That’s if your csv file is really big.</p>
+	
 
-<h2 id="theproblemwithusers">The problem with users</h2>
+	<div class="site-footer">
+	<div class="footer-text">&copy; Copyright 2014 <a href="../index.html">Xavier Riley</a>, all rights reserved. Proudly published with <a href="http://tryghost.org" target="_blank">Ghost</a> and <a href="http://themeforest.net/item/plattan-responsive-flat-and-clean-ghost-theme/6882608">Plattan</a> theme.</div>
+</div>
 
-<p>Now the above works fine for most things, but the problem with users lies in the different authentication that both shops use. Magento uses MD5 with a salt on the end, Prestashop uses a ‘Cookie Key’ prefix to the customer password, which is then MD5 encrypted. <br />
-Anyone who’s looked into MD5 knows that this is a pig – you can’t reverse an MD5 into plain text, therefore you can’t get the original password strings in order to re-encode them (which is actually a good thing…).</p>
 
-<h2 id="howtofixit">How to fix it</h2>
+</section>
 
-<p>Clearly its impossible to convert from one MD5 hash to another so we have to try something different. Make the following file;</p>
 
-<pre><code>(magentoroot)/app/code/local/Mage/Customer/Model/Customer.php
-</code></pre>
+	    </div>
 
-<p>and in it put the following;</p>
+	    <script src="../shared/vendor/jquery/jquery.js?v=0d5e549fe6"></script>
 
-<pre><code class="php">class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract  
-{
-/**
-* Authenticate customer
-*
-* @param string $login
-* @param string $password
-* @return true
-* @throws Exception
-*/
-public function authenticate($login, $password)  
-{
+	    <script type='text/javascript' src='../assets/js/scripts.min.js'></script>
+	    <script type='text/javascript' src='../assets/js/vendor/highlight/highlight.pack.js'></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21587005-1']);
+        _gaq.push(['_trackPageview']);
 
-$this-&gt;loadByEmail($login);
-if ($this-&gt;getConfirmation() &amp;&amp; $this-&gt;isConfirmationRequired()) {  
-throw Mage::exception('Mage_Core', Mage::helper('customer')-&gt;__('This account is not confirmed.'),  
-self::EXCEPTION_EMAIL_NOT_CONFIRMED  
-);
-}
-if (!$this-&gt;validatePassword($password) &amp;&amp; !$this-&gt;validatePassword('hKvthisisyourgibberishcookiestringfromprestashopCM'.$password)) {  
-throw Mage::exception('Mage_Core', Mage::helper('customer')-&gt;__('Invalid login or password.'),  
-self::EXCEPTION_INVALID_EMAIL_OR_PASSWORD  
-);
-}
-Mage::dispatchEvent('customer_customer_authenticated', array(  
-'model' =&gt; $this,  
-'password' =&gt; $password,  
-));
-return true;  
-}
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+      </script>
 
-//end class
-}
-}
-</code></pre>
-
-<p>Notice the random string prepended to the password variable? That’s your cookie string which you’ll find in your Prestashop install here;</p>
-
-<pre><code>(prestshop root)/config/settings.inc.php
-</code></pre>
-
-<p>It’s the line beginning</p>
-
-<pre><code class="php">define('_COOKIE_KEY_', 'ThisIsTheBitYouWant...'  
-</code></pre>
-
-<p>Believe it or not that’s all you need to do. Import your MD5 hashes from Prestashop straight into Magento and it’ll authenticate them as Prestashop would do. I’ll go through the mysql import in another post.</p>]]></description><link>http://my-ghost-blog.com/migrating-customers-from-prestashop-to-magento/</link><guid isPermaLink="false">68fff6ae-7372-4beb-91ab-97327137320e</guid><category><![CDATA[php, prestashop]]></category><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Thu, 03 Sep 2009 11:00:00 GMT</pubDate></item></channel></rss>
+	</body>
+</html>
