@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ghost]]></title><description><![CDATA[Just a blogging platform.]]></description><link>http://my-ghost-blog.com/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Sat, 01 Mar 2014 14:51:15 GMT</lastBuildDate><atom:link href="http://my-ghost-blog.com/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[(Re)Starting a blog with Ghost]]></title><description><![CDATA[<p>I like to ramble on as much as the next person, but up till now it's mostly been offline. To save my wife from hearing me talk about programming and tax law I'm making like it's 2004 and (re)starting a blog. Properly this time. Like with actual content and everything.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://my-ghost-blog.com/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Sat, 01 Mar 2014 15:42:56 GMT</lastBuildDate><atom:link href="http://my-ghost-blog.com/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[(Re)Starting a blog with Ghost]]></title><description><![CDATA[<p>I like to ramble on as much as the next person, but up till now it's mostly been offline. To save my wife from hearing me talk about programming and tax law I'm making like it's 2004 and (re)starting a blog. Properly this time. Like with actual content and everything.</p>
 
 <h3 id="discoveringghost">Discovering Ghost</h3>
 
-<p>For past blogging attempts I've used Wordpress (easy) and Jekyll (hackable) and neither were much fun. As a developer I want something that's easy and hackable and I'm hoping that the node based Ghost fits the bill.</p>
+<p>For past blogging attempts I've used Wordpress (easy) and Jekyll (hackable) and neither were much fun. As a developer I want something that's easy <em>and</em> hackable and I'm hoping that the node based Ghost fits the bill.</p>
 
 <p>I get to write Markdown (win) with a nice javascript-based preview window, and the posts save to an SQLite database. </p>
 
@@ -39,6 +39,15 @@ git push -f origin master
 </code></pre>
 
 <p>which <em>blows away the old repo</em> and lets me deploy normally from then on.</p>
+
+<h5 id="forbonuspoints">For bonus points</h5>
+
+<p>To make the deploy process smoother, try running:</p>
+
+<pre><code>sudo sh -c 'echo "127.0.0.1 local.tryghost.org" &gt;&gt; /etc/hosts'
+</code></pre>
+
+<p>to be able to run <code>buster generate</code> with no extra args.</p>
 
 <h4 id="conclusion">Conclusion</h4>
 

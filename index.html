@@ -1,387 +1,130 @@
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	    <title>Xavier Riley</title>
+	    <meta name="description" content="Blogging about programming, companies and music." />
+	    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+	    <meta name="HandheldFriendly" content="True" />
+	    <meta name="MobileOptimized" content="320" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <meta name="generator" content="Ghost 0.4" />
+<link rel="alternate" type="application/rss+xml" title="Xavier Riley" href="rss/index.html">
+<link rel="canonical" href="http://my-ghost-blog.com/" />
+	    <script type='text/javascript'>//<![CDATA[
+	    	var disqus = {
+	    		'activate' : true,
+	    		'shortname' : 'xavriley'
+	    	};
+	    //]]></script>
+    </head>
+    <body class="home-template">
+        <div class="site">
 
-	<title>Forsyths Music Shop</title>
+	    	
+<header class="sidebar-header">
+
+    <div class="first">
+        <div class="header-content">
+            <a class="blog-title" href="http://my-ghost-blog.com" title="Xavier Riley">
+                Xavier Riley
+                <span class="byline">Blogging about programming, companies and music.</span>
+            </a>
+            <div class="social-icons" style="display: block !important;">
+              <a href="http://twitter.com/xavriley" title="Find me on twitter">k</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="second">
+        <a class="expander" title="Show menu">
+        	<div class="expand"><span class="icon"></span>Menu</div>
+        	<div class="collapse"><span class="icon collapse"></span>Collapse</div>
+        </a>
+		<!--div class="cover-wrapper">
+			<img class="cover" src="" alt="" title="" />
+		</div-->
+        <ul class="main-menu">
+                <li class="menu-item">
+                    <a href="http://my-ghost-blog.com">Home</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://opencorporates.com" target="_blank">Work: OpenCorporates</a>
+                </li>
+            </ul>
+    </div>
+
+</header>
+
+
+	<section class="page-content primary" role="main">
 		
-	<meta name="description" content="Shop powered by PrestaShop">
-	<meta name="keywords" content="shop, prestashop">
-	<meta name="robots" content="index,follow">
-	<meta name="viewport" content="width=1024">
-	<link rel="icon" type="image/vnd.microsoft.icon" href="http://forsyths.dev/img/favicon.ico">
-	<link rel="shortcut icon" type="image/x-icon" href="http://forsyths.dev/img/favicon.ico">
-	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script type="text/javascript">
-		var baseDir = 'http://forsyths.dev/';
-		var static_token = '7112c3e13dee982ad458dea5235acd84';
-		var token = 'cdb2b35f95f5828fb14dcd4d60336139';
-		var priceDisplayPrecision = 2;
-		var priceDisplayMethod = 0;
-		var roundMode = 2;
-	</script>
 
-		<link href="http://forsyths.dev/themes/forsyth/css/global.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blockcategories/blockcategories.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blockspecials/blockspecials.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blocknewproducts/blocknewproducts.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blocklanguages/blocklanguages.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/wpblogfeed/wpblogfeed.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/paypal/css/paypal.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blocktopmenu/css/superfish-modified.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/homeslider/bx_styles.css" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://forsyths.dev/modules/blockreinsurance/style.css" rel="stylesheet" type="text/css" media="all" />
-			<script type="text/javascript" src="http://forsyths.dev/js/jquery/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/js/jquery/jquery-migrate-1.2.1.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/js/jquery/plugins/jquery.easing.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/js/tools.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/themes/forsyth/js/tools/treeManagement.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/modules/forsythnav/forsythnav.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/modules/blocktopmenu/js/hoverIntent.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/modules/blocktopmenu/js/superfish-modified.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/modules/homeslider/js/jquery.bxSlider.min.js"></script>
-		<script type="text/javascript" src="http://forsyths.dev/modules/homeslider/js/homeslider.js"></script>
-		<script type="text/javascript">
-$(document).ready( function() {
+			<article id="post-1" class="post post tag-getting-started" role="article" itemscope itemtype="http://schema.org/Article">
 
-	$('#payment_paypal_express_checkout').click(function() {
-		$('#paypal_payment_form').submit();
-		return false;
-	});
+			    <p></p>
 
-	$('#paypal_payment_form').live('submit', function() {
-		var nb = $('#quantity_wanted').val();
-		var id = $('#idCombination').val();
+			    <div class="content-wrapper">
+				    <h2 class="post-title">
+						<a href="blogging-with-ghost-buster-and-github-pages/index.html" rel="bookmark">
+				    		(Re)Starting a blog with Ghost
+				    	</a>
+				    </h2>
 
-		$('#paypal_payment_form input[name=quantity]').val(nb);
-		$('#paypal_payment_form input[name=id_p_attr]').val(id);
-	});
+				    <div class="post-meta">
+						Posted
+						<span datetime="2014-03-01" itemprop="datePublished">
+							Saturday, 01 Mar
+						</span>
+						
+							by Xavier Riley
+						
+		                
+		                	<div class="post-tags">
+		                		Tags:
+			                    Getting Started
+			                </div>
+		                
+					</div>
 
-	function displayExpressCheckoutShortcut() {
-		var id_product = $('input[name="id_product"]').val();
-		var id_product_attribute = $('input[name="id_product_attribute"]').val();
+				    <div class="post-content" itemprop="articleBody">
 
-		$.ajax({
-			type: "GET",
-			url: baseDir+'/modules/paypal/express_checkout/ajax.php',
-			data: { get_qty: "1", id_product: id_product, id_product_attribute: id_product_attribute },
-			cache: false,
-			success: function(result) {
-				if (result == '1') {
-					$('#container_express_checkout').slideDown();
-				} else {
-					$('#container_express_checkout').slideUp();
-				}
-				return true;
-			}
-		});
-	}
+						<p>
+							I like to ramble on as much as the next person, but up till now it's mostly been offline. To save my wife from hearing me talk about programming and tax law I'm making like it's 2004 and (re)starting a blog. Properly this time. Like with actual content and everything. Discovering Ghost For past blogging attempts I've used Wordpress (easy) and Jekyll (hackable) and neither were much fun. As a developer I want something that's easy and hackable and <span class="post-continue">&hellip;</span>
+							<b class="quote-title"><br /> - (Re)Starting a blog with Ghost</b>
+						</p>
 
-	$('select[name^="group_"]').change(function () {
-		displayExpressCheckoutShortcut();
-	});
+						<a class="read-more" href="blogging-with-ghost-buster-and-github-pages/index.html">Read more</a>
 
-	$('.color_pick').click(function () {
-		displayExpressCheckoutShortcut();
-	});
-	
-	
-			
+					</div>
 
-	var modulePath = 'modules/paypal';
-	var subFolder = '/integral_evolution';
-	var fullPath = baseDir + modulePath + subFolder;
-	var confirmTimer = false;
-		
-	if ($('form[target="hss_iframe"]').length == 0) {
-		if ($('select[name^="group_"]').length > 0)
-			displayExpressCheckoutShortcut();
-		return false;
-	} else {
-		checkOrder();
-	}
+				</div>
 
-	function checkOrder() {
-		confirmTimer = setInterval(getOrdersCount, 1000);
-	}
-
-	});
-
-
-</script>
-    <meta name="google-site-verification" content="XtRZimTayrj5ZYracHPanDINRkwYrV0SSdY_Q4f7fSQ" />
-  <meta name="msvalidate.01" content="3D679C44E65DAB3FCC9DF93148F3E815" />
-</head>
-
-<body id="index" >
-	<div id="content">
-		<header class="layout">
-		<section class="store clearfix">
-			<div class="item identity">
-				<a href="index.html"><img class="logo" src="http://forsyths.dev/themes/forsyth/img/store-logo.png" alt="Forsyths Music Shop"></a>
-				<h2>Your Complete Music Store in Manchester, since 1857</h2>
-			</div>
-			<section class="user-panel">
-				<!-- <div class="item">Welcome to Forsyth.</div> -->
-				<nav class="item user-nav">
-										<a href="http://forsyths.dev/my-account">Sign In</a>
-									</nav>
-			</section>
-			<!--<article class="item facebook">
-				Facebook Like Widget
 			</article>
-			<section class="item odd">
-				<div class="dropdown-btn">Need help?</div>
-				<div class="dropdown-drawer">
-					<ul class="dropdown-drawer" style="display: none; ">
-						<li><a href="#report">Report an issue</a></li>
-						<li><a href="#support">Help</a></li>
-						<li><a href="#contact">Contact us</a></li>
-					</ul>
-				</div>
-			</section>-->
-		</section>
-		<section class="main-bar">
-						<nav class="main">
-				<ul class="top-level">
-					<li class="parent home"><a href="index.html">Home</a></li>
-																							<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/pianos">Pianos</a>
-						</div>
-					</li>
 
-																													<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/guitars">Guitars</a>
-						</div>
-					</li>
+		
 
-																													<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/instruments">Instruments</a>
-						</div>
-					</li>
+	    
+			<div class="pagination" role="pagination">
+				<nav class="pagination" role="navigation">
+    
+    <span class="page-number">Page 1 of 1</span>
+    
+</nav>
+			</div>
+	    
 
-																													<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/music">Music</a>
-						</div>
-					</li>
+	    <div class="site-footer">
+	<div class="footer-text">&copy; Copyright 2014 <a href="index.html">Xavier Riley</a>, all rights reserved. Proudly published with <a href="http://tryghost.org" target="_blank">Ghost</a> and <a href="http://themeforest.net/item/plattan-responsive-flat-and-clean-ghost-theme/6882608">Plattan</a> theme.</div>
+</div>
 
-																													<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/sale">Sale</a>
-						</div>
-					</li>
-
-																													<li class="parent">
-						<div class="wrapper">
-							<a href="http://forsyths.dev/services">Services</a>
-						</div>
-					</li>
-
-															</ul>	
-			</nav>
-<!-- /Block categories module -->
-
-	<section class="search">
-        <form method="get" action="http://forsyths.dev/search" id="searchbox">
-          <input type="search" name="search_query" placeholder="Search" value="">
-          <input type="hidden" name="orderby" value="position" />
-          <input type="hidden" name="controller" value="search" />
-          <input type="hidden" name="orderway" value="desc" />
-        </form>
 	</section>
-			<section class="cart">
-				<div class="cart-mini-icon">Cart</div>
-				<div class="cart-mini-bubble">0</div>
-				<div class="cart-summary">
-					<ul class="cart_headings">
-						<li class="product_header">Product</li>
-						<li class="quantity_header">Quantity</li>
-						<li class="price_header">Price</li>
-					</ul>
-										<p class="notice text-center">Your shopping cart is empty.</p>									</div>
-			</section>
-		</section>
-					</header>
 
-	<section role="main" class="layout clearfix">
-						<section class="slates">
-			<ul class="clearfix">
-				<li class="col3">
-					<h2 class="pianos"><a href="http://forsyths.dev/pianos">Pianos</a></h2>
-					<footer>
-						<a href="http://forsyths.dev/pianos/32092-grand-pianos">Grands</a>, <a href="http://forsyths.dev/pianos/32091-upright-pianos">Uprights</a>, <a href="http://forsyths.dev/pianos/32101-digital-pianos">Digital</a>
-					</footer>
-				</li>
-				<li class="col3">
-					<h2 class="guitars"><a href="http://forsyths.dev/guitars">Guitars</a></h2>
-					<footer>
-						<a href="http://forsyths.dev/guitars/32043-acoustic-guitars">Acoustic</a>, <a href="http://forsyths.dev/guitars/32066-basses">Bass</a>, <a href="http://forsyths.dev/guitars/32044-classical-guitars">Classical</a>, <a href="http://forsyths.dev/guitars/32042-electric-guitars">Electric</a>
-					</footer>
-				</li>
-				<li class="col3">
-					<h2 class="instruments"><a href="http://forsyths.dev/instruments">Instruments</a></h2>
-					<footer>
-						<a href="http://forsyths.dev/instruments/32097-stringed-instruments">Strings</a>, <a href="http://forsyths.dev/instruments/32093-folk-instruments">Folk</a>, <a href="http://forsyths.dev/instruments/32100-instrument-accessories">Accessories</a>
-					</footer>
-				</li>
-				<li class="col3">
-					<h2 class="music"><a href="http://forsyths.dev/music">Music</a></h2>
-					<footer>
-						<a href="http://forsyths.dev/music">Printed Music</a>, <a href="http://forsyths.dev/music/32259-recorded-music-cds-etc">Recorded Music</a>
-					</footer>
-				</li>
-			</ul>
-		</section>
-		<section class="slates clearfix">
-			<div class="slate col6">
-				<h2>Because we care about instruments.</h2>
-				<p>We’ve seen some fabulous and unique instruments during our 150 years. We pride ourselves in our careful selection of the finest in every price range. Then, where necessary, we restore them to tip-top condition.  Finally our technicians and luthiers dedicate time to set them up, so you can experience their full potential for yourself in our store.</p>
-			</div>
-			<div class="slate col6">
-				<h2>Because practice makes perfect.</h2>
-				<p>To help you achieve your goals in music we have an unrivalled selection of Printed Music as well as all the necessary accessories for your instrument.  Select from the range yourself or contact us - we can help you to identify the piece of music, string or reed that is just right for you or your budding Marr, Elton, Brendel or Callas.</p>
-			</div>
-		</section>
-		<section class="slates">
-			<div class="col6">
-				
-			</div>
-		</section>
+	    </div>
 
-<!-- Module HomeSlider -->
-<script type="text/javascript">
-			var homeslider_loop = true;
-	var homeslider_speed = 500;
-var homeslider_pause = 4500;
-</script>
-<ul id="homeslider">
-			<li>
-			<a href="http://youtu.be/jjk11ZppQuI" title="5 floors and 15,000 sq feet of musical heaven">
-        <img src="http://s3-eu-west-1.amazonaws.com/assets.forsyths.co.uk/modules/homeslider/images/c32a2f5c2fdfda8702a4cfbee552c239.jpg" alt="Forsyth Music Shop Deansgate Manchester" height="300" width="475" />
-			</a>
-		</li>
-				<li>
-			<a href="http://www.forsyths.co.uk/pianos" title="Piano Department - Official agents for C Bechstein, Bosendorfer, Kawai, Kemble, May-Berlin, Schimmel, Vogel, Yamaha.  Also quality pre-owned instruments by Bluthner, Fazioli, Steinway etc ">
-        <img src="http://s3-eu-west-1.amazonaws.com/assets.forsyths.co.uk/modules/homeslider/images/c6fa1c4b29481d43ffef11d1f4b42273.jpg" alt="Pianos" height="300" width="475" />
-			</a>
-		</li>
-				<li>
-			<a href="http://www.forsyths.co.uk/instruments/32093-folk-instruments" title="Ukuleles">
-        <img src="http://s3-eu-west-1.amazonaws.com/assets.forsyths.co.uk/modules/homeslider/images/05d4a5db5d22aa72a64b3dc91441215b.jpg" alt="Ukuleles" height="300" width="475" />
-			</a>
-		</li>
-				<li>
-			<a href="http://www.forsyths.co.uk/guitars" title="Guitars">
-        <img src="http://s3-eu-west-1.amazonaws.com/assets.forsyths.co.uk/modules/homeslider/images/4983b248c3e5ec796b8423a4539a67fb.jpg" alt="Guitars" height="300" width="475" />
-			</a>
-		</li>
-				<li>
-			<a href="http://youtu.be/jjk11ZppQuI" title="Forsyth is in the heart of Manchester on Deansgate.  15,000sq ft of musical heaven">
-        <img src="http://s3-eu-west-1.amazonaws.com/assets.forsyths.co.uk/modules/homeslider/images/c9729e020ce2e143a08aff5959029738.jpg" alt="Forsyth Music Shop Deansgate Manchester" height="300" width="475" />
-			</a>
-		</li>
-	</ul>
-<!-- /Module HomeSlider -->
+	    <script src="shared/vendor/jquery/jquery.js?v=0d5e549fe6"></script>
 
-<!-- MODULE Wordpress blog feed -->
-<div id="wpblogfeed_block_center" class="block products_block">
-	    <ul class="blog-feed list clearfix">
-          <li class="the-forsyths-blog clearfix post" id="post-359">
-   <a class="category-name" href="http://blog.forsyths.co.uk/blog/category/the-forsyths-blog/">The Forsyths Blog</a> 
-   <a class="category-title" href="http://blog.forsyths.co.uk/blog/new-web-site/" rel="bookmark">New Web Site!!!</a>
-   <p><a href="http://blog.forsyths.co.uk/blog/new-web-site/"><p>Coming Soon&#8230;</p>
-</a></p>
-</li>
-        <li class="piano-department clearfix post" id="post-1138">
-   <a class="category-name" href="http://blog.forsyths.co.uk/pianos-at-forsyths/blog/category/piano-department/">Piano Department</a> 
-   <a class="category-title" href="http://blog.forsyths.co.uk/pianos-at-forsyths/schimmel-factory-video/" rel="bookmark">Schimmel Factory Video</a>
-   <p><a href="http://blog.forsyths.co.uk/pianos-at-forsyths/schimmel-factory-video/"><p>Click Schimmel to view the video. All Schimmel upright and &#8230;</p>
-</a></p>
-</li>
-        <li class="piano-department clearfix post" id="post-1278">
-   <a class="category-name" href="http://blog.forsyths.co.uk/pianos-at-forsyths/blog/category/piano-department/">Piano Department</a> 
-   <a class="category-title" href="http://blog.forsyths.co.uk/pianos-at-forsyths/delivered-safe-and-sound/" rel="bookmark">Delivered safe and sound</a>
-   <p><a href="http://blog.forsyths.co.uk/pianos-at-forsyths/delivered-safe-and-sound/"><p>Just received this from our customer who bought a Schimmel C&#8230;</p>
-</a></p>
-</li>
-   </ul>
-
-	</div>
-<!-- /MODULE Home Block best sellers -->
-
-
-				</section>
-	<div id="clearfix"></div>
-</div><!--  /content -->
-	<footer class="bg">
-		<div class="layout clearfix">
-			<nav class="col9">
-        
-                  <div id="footer_1" class="col2">
-            <h4>Home</h4>
-            <ul>
-                                            <li><a href="http://forsyths.dev/content/4-about-us" title="About us">About us</a></li>                              <li><a href="http://forsyths.dev/content/20-web-site-terms-and-conditions" title="Web Site Terms and Conditions">Web Site Terms and Conditions</a></li>                              <li><a href="http://forsyths.dev/content/21-contact-us" title="Contact Us">Contact Us</a></li>                          </ul>
-          </div>
-                  <div id="footer_2" class="col2">
-            <h4>Products, Ordering and Delivery</h4>
-            <ul>
-                                            <li><a href="http://forsyths.dev/content/28-purchase-of-goods-and-services" title="Purchase of Goods and Services">Purchase of Goods and Services</a></li>                              <li><a href="http://forsyths.dev/content/27-delivery" title="Delivery">Delivery</a></li>                          </ul>
-          </div>
-        				<div class="col1">
-					<h4>Buzz</h4>
-					<ul>
-						<li><a href="http://www.facebook.com/Forsyths.Music.Shop">Facebook</a></li>
-						<li><a href="http://twitter.com/ForsythMusic">Twitter</a></li>
-						<li><a href="http://blog.forsyths.co.uk">Blog</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="col3 footer-address">
-				<h4>Forsyth</h4>
-        <address>
-				<p>126 Deansgate</p>
-				<p>Manchester</p>
-				<p>M3 2GR</p>
-				<p>T: 0161 956 2052</p>
-				<a target="_blank" href="http://goo.gl/maps/H2jmy">Map</a>
-        </address>
-      </div>
-		</div>
-			<!--
-			<div class="payment">
-				<ul>
-					<li>PayPal</li>
-					<li>VISA</li>
-					<li>MasterCard</li>
-					<li>Maestro</li>
-				</ul>
-			</div>
-			-->
-		<section class="layout misc">
-      <small>&copy; 2014 Forsyth Brothers Ltd. All Rights Reserved. Vat No. GB: 145497051</small>
-		</section>
-	</footer>
-	  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5920868-1']);
-    _gaq.push(['_setDomainName', 'forsyths.co.uk']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
-  </script>
+	    <script type='text/javascript' src='assets/js/scripts.min.js'></script>
 	</body>
 </html>
