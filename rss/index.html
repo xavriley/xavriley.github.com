@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Mon, 10 Mar 2014 09:54:56 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[Transcript of Edward Snowden&#x27;s Testimony to EU]]></title><description><![CDATA[<p>Edward Snowden recently provided testimony to the European Parliament's Civil Liberties, Justice and Home Affairs (LIBE) committee as part of its inquiry on electronic mass surveillance of EU citizens. <br />
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Mon, 06 Oct 2014 10:40:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[Getting data from PDFs with JRuby]]></title><description><![CDATA[<p>There are many solutions for getting data from pdfs. I'm going to describe how to use the excellent Java library PDFTextStream by Chas Emerick (of Clojure fame) to get data out of tricky pdfs.</p>
+
+<h2 id="whypdftextstream">Why PDFTextStream?</h2>
+
+<p>Quite simply, it's the best PDF extraction library I've come across in terms of features and performance. It handles layouts and formatting very well and the xml output gives some useful tags for data extraction.</p>
+
+<h3 id="gettingthelibrary">Getting the library</h3>
+
+<p>Head over to <a href='http://snowtide.com/downloads' >http://snowtide.com/downloads</a> and download the latest Java version (2.7.0 at the time of writing) and unzip into a folder called <code>jruby-demo</code>.</p>
+
+<h3 id="somejrubyjavainterop">Some JRuby/Java interop</h3>
+
+<p>Create a file at <code>jruby-demo/pdf-extractor.rb</code> with the following contents:</p>
+
+<pre><code class="ruby">require 'java'  
+require 'json'  
+require 'PDFTextStream.Java-2.7.0/lib/PDFTextStream.jar'  
+$CLASSPATH &lt;&lt; 'PDFTextStream.Java-2.7.0/src'
+
+java_import com.snowtide.pdf.PDFTextStream  
+java_import com.snowtide.pdf.OutputTarget # To output plain text  
+java_import "pdfts.examples.XMLOutputTarget" # To output XML  
+java_import java.lang.StringBuilder
+
+pdf_file_path = File.join(Dir.pwd, ARGV[0])
+
+  sb = StringBuilder.new # Requires Java StringBuilder for some reason
+  pdfts = Java::ComSnowtidePdf::PDFTextStream.new(pdf_file_path)
+
+  case ARGV[1]
+    when "xml"
+      # XMLOutputTarget keeps the formatting tags of 
+      # the input PDF - useful if the source uses bold or italics etc.
+      ot = XMLOutputTarget.new
+
+      pdfts.pipe(ot)
+      pdfts.close
+      puts ot.getXMLAsString
+    when "standard"
+      # Normal OutputTarget reformats the text to handle
+      # column layouts
+      ot = Java::ComSnowtidePdf::OutputTarget.new(sb)
+
+      pdfts.pipe(ot)
+      pdfts.close
+      puts sb.to_s
+    when "visual"
+      # VisualOutputTarget is better at preserving layout in
+      # the conversion to text e.g. tables
+      ot = Java::ComSnowtidePdf::VisualOutputTarget.new(sb)
+
+      pdfts.pipe(ot)
+      pdfts.close
+      puts sb.to_s
+    else
+      # VisualOutputTarget is better at preserving layout in
+      # the conversion to text e.g. tables
+      ot = Java::ComSnowtidePdf::VisualOutputTarget.new(sb)
+
+      pdfts.pipe(ot)
+      pdfts.close
+      puts sb.to_s
+  end
+</code></pre>
+
+<h3 id="extractingsometext">Extracting some text</h3>
+
+<p>Move a pdf into the folder, install jruby and then run:</p>
+
+<pre><code class="bash">cd jruby-demo  
+jruby pdf-extractor.rb name-of-your-pdf.pdf standard  
+</code></pre>
+
+<p>and after a few seconds of jvm warm up time you should start to see text on STDOUT.</p>
+
+<h3 id="differentextractionmodes">Different extraction modes</h3>
+
+<p><code>standard</code> - This handles column layouts (common in pdfs) and reflows them to make sure the text reads in the correct order.</p>
+
+<p><code>visual</code> - This preserves the text spacing on the page which is useful for tabular data.</p>
+
+<p><code>xml</code> - If the source data has bold or italic text, this processor outputs xml markup which can be useful for further processing with Nokogiri or other similar libraries.</p>]]></description><link>http://localhost:2368/getting-data-from-pdfs-with-jruby/</link><guid isPermaLink="false">3d23e46f-8487-453f-ac56-90c0b25a9a83</guid><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Mon, 06 Oct 2014 10:39:45 GMT</pubDate></item><item><title><![CDATA[Transcript of Edward Snowden&#x27;s Testimony to EU]]></title><description><![CDATA[<p>Edward Snowden recently provided testimony to the European Parliament's Civil Liberties, Justice and Home Affairs (LIBE) committee as part of its inquiry on electronic mass surveillance of EU citizens. <br />
 There's better analysis and comment elsewhere but I thought it's important enough to be available in a readable plain text format, rather than a PDF.</p>
 
 <p>Source pdf available at <a href='http://www.europarl.europa.eu/document/activities/cont/201403/20140307ATT80674/20140307ATT80674EN.pdf' >http://www.europarl.europa.eu/document/activities/cont/201403/20140307ATT80674/20140307ATT80674EN.pdf</a></p>
