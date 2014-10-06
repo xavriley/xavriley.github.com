@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Mon, 06 Oct 2014 10:40:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[Getting data from PDFs with JRuby]]></title><description><![CDATA[<p>There are many solutions for getting data from pdfs. I'm going to describe how to use the excellent Java library PDFTextStream by Chas Emerick (of Clojure fame) to get data out of tricky pdfs.</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Mon, 06 Oct 2014 12:59:51 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[The Evils of Open Source]]></title><description><![CDATA[<p>Recently I caught a conference talk by @rbin of SendGrid where he outlined some benefits of the "Open Source" movement for the uninitiated. Whilst it was a good talk, something about it lodged in my mind. For me the virtues of Open Source aren't as clear as the speaker made out and I'd like to articulate why, based on some quotes and tweets:</p>
+
+<h2 id="exhibitasteveklabnikonopensource">Exhibit A: Steve Klabnik on Open Source</h2>
+
+<blockquote>
+  <p>Open source is a mega-capitalist conspiracy to reduce programmer wages. ... it's yet another method to drive down costs. ... </p>
+  
+  <p>The other day I was hanging out with two people and there was somebody there using a jackhammer outside where we were. I said, "Nobody asked the jackhammer dude to work on an open jackhammer project on Saturdays, that would be totally absurd." But that's what we do. Programmers as a class systematically devalue their own labor, doing it for free without being asked to.</p>
+  
+  <p>It's not universally bad - it's really cool that you can get all this software for free. But, value is being generated from your labor and it's not being captured by you, and that's unsustainable. I'm only able to do open source work now because I'm getting a real salary from Mozilla. They're a one-of-a-kind organization that can afford to pay people for open source stuff ... but the whole world can't work for Mozilla.</p>
+</blockquote>
+
+<p><a href='http://www.maskmagazine.com/the-cyborgoisie-issue/work/steve-klabnik-interview' >Excerpt taken from "Steve Klabnik: Programming for Programmers" in Mask Magazine - the cyborgoisie issue NB subscription required</a></p>
+
+<p>He goes on to say how an open source portfolio is now a key job selection criteria which is setting the balance in favour of those who have the free time to work on those projects.</p>
+
+<h3 id="wat">wat?</h3>
+
+<p>Here we have one of the <a href='https://gist.github.com/paulmillr/2657075/' >most prolific Open Source contributors of all time</a> calling out Open Source as a (mostly) bad idea. Particularly when viewed from a marxist standpoint. This begs a questions about when and where "Open Source" steps over the line into being bad, which I'll try to answer.</p>
+
+<h2 id="exhibitbheathergolddesigningforconversation">Exhibit B: Heather Gold - "Designing for conversation"</h2>
+
+<blockquote>
+  <p>Nothing brings people together like a shared problem. This is what holds people together. Part of the reason we solve problems isn't just to build a bridge to get across the river - it's because the feeling of doing it together is awesome. That's probably one of the best feelings we have in life.</p>
+</blockquote>
+
+<p><a href='http://youtu.be/N1Y7wi7BaXw?t=16m14s' >Heather Gold - "Designing for Conversation"</a></p>
+
+<p>If we can agree on this premise, I think it's the best explanation of why we as programmers choose to give up our labour for free. Collaborating on a shared problem is awesome. It feels great. Github is built on the fact that having a pull request accepted, or code you've written being used by others, is a universally good feeling. But this feeling is open to abuse when other forces get involved.</p>
+
+<h2 id="evil1theawesomefeelinggetscooptedbyevilactors">Evil #1 - the "awesome feeling" gets co-opted by evil actors</h2>
+
+<p>Here I'm mainly talking about corporate hack days. A while ago, I saw a tweet about  Unilever running a weekend hackathon. This upset some people and ISTR it making it onto Hacker News.</p>
+
+<p><a href='http://webcache.googleusercontent.com/search?q=cache:nYps_aKQi-kJ:https://twitter.com/pezholio/status/494394403767975936+&amp;cd=2&amp;hl=en&amp;ct=clnk&amp;gl=uk' >“I know what I’ll do with my weekend, I’ll sit in a room and code so Unilever can add a few points to their share value” Said no one ever</a></p>
+
+<p>The problem here is that Unilever have a market cap of around $74 Billion dollars. They could afford to pay every single attendee of that hackathon a handsome wage for their time and ideas and yet they don't.</p>
+
+<p>As programmers, we need to become aware of these issues like Klabnik is telling us to. Hackathons are not evil by nature - at least with doing a hackathon for charity or the government where you can cite some feeling of civic or moral duty. Even at a stretch, a corporate hackathon might be worthwhile if it presents some valuable opportunity for learning. I can fully see that if I was interested in learning how email tech works at scale, attending a hackathon hosted by SendGrid would be a good use of my time. The same can't be said for Unilever in my opinion. If you're attending a hackathon or contributing to an open source project ask yourself - "do these people value my input with the proper respect?"</p>
+
+<h2 id="evil2weprogrammerslosesightoftheawesomefeeling">Evil #2 - we programmers lose sight of the "awesome feeling"</h2>
+
+<p>A topical example. Nick Sutterer is the developer of the popular Active Form plugin for Rails. He recently tweeted this:</p>
+
+<p><a href='https://twitter.com/apotonick/status/517840615866769408' >https://twitter.com/apotonick/status/517840615866769408</a></p>
+
+<p>What appears to have happened is that some other developer has decided Active Form is better than the current defaults in Rails and copied the project wholesale without attribution. The incentive to be a "core rails" committer is a strong one and I can see that, for those without a moral compass, stealing code from another established project is a tempting option. The result? Another dev has "sold out" @apotonick in order to improve their rep in the Open Source world. </p>
+
+<p>What's interesting to me is that some of the comments appear to be questioning this action on the technicalities of the licence involved. That might be appropriate in a commercial transaction, but in an act of social collaboration? I'm not sure. Everyone is giving their time for free and that needs to be respected - the other dev has denied @apotonick the feeling of pride and satisfaction that would have come from seeing his project merged into Rails. We should all learn from this example - the "Open Source spirit" is built on a bedrock of attributing people properly for their hard work. If we don't call this kind of behaviour out then the whole thing will crumble.</p>
+
+<h2 id="evil3opensourcesustainable">Evil #3 - Open Source != sustainable</h2>
+
+<p>As a rule, working for free isn't sustainable. That said, in an ideal world we all have a bit of leisure time to spend as we please. If I feel like contributing to an <a href='http://sonic-pi.net/' >awesome Open Source music programming project</a> and I have the time, that's my perogative. I think this third evil arises when the motivations for contributing get mixed up. When we're not clear about the boundary between hobby projects and work projects things start to come unstuck. If I start out writing a new super fast web framework as a hobby project (perhaps to learn more or because I thought I could do better than what's out there) that's fine. But let's say that project gets picked up and used by thousands of businesses around the world.  This project has made the leap from bedroom hacking to critical infrastructure - success? It is a success of sorts. The good feeling of having your contribution used in the world is undeniable. However, Open Source doesn't have a notion of responsibility here - it's quite likely that people will hold you personally responsible for your projects bugs and failures. </p>
+
+<p><a href='https://medium.com/code-adventures/farewell-node-js-4ba9e7f3e52b' >Here's a real world example</a> of TJ Holowaychuk who was so prolific that this Quora post <a href='http://www.quora.com/TJ-Holowaychuk-1/How-is-TJ-Holowaychuk-so-insanely-productive' >questions whether he really exists</a>. He wrote a massive amount of widely used node js infrastructure and then left it to the community to maintain. To reiterate, that's his right to spend his time as he pleases and there's nothing wrong with that. Perhaps he needed to take a paying job? Whatever the reason, he's one of a string of dropouts from the Open Source community which suggests that burnout is a real hazard both to the individual and to the businesses that rely on their work.</p>
+
+<p>What's the solution here? Speaking with some tech people at Wikipedia they seemed to be intrinsically aware of this. <a href='http://tools.wmflabs.org/' >Their tools for wikimedia users and developers</a> are built on the premise that if it becomes valuable infrastructure then the Wikimedia foundation will shoulder the responsibility if you choose to abandon the project. For this reason they require that you host on their infrastructure (for free) and publish the source of your work. This helps to take some of the heat off. </p>
+
+<p>Another solution might be GitTip and other ways of recognizing contributions financially. Whilst these are good, I suspect that they lead to a real world undervaluation of a person's contribution.</p>
+
+<p>The last point is that for Open Source to be sustainable, it should probably be sponsored or supported by an organization. The idea of Wordpress contributing back to ElasticSearch through open source is an entirely natural one. Joint ventures and partnerships are common in the business world. Steve Klabnik is supported by Mozilla and appears to be comfortable with this arrangment. I think that as developers, we should develop a sense of which projects are appropriate for hacking on personally and which are better suited to some kind of organisational sponsorship. Secondly we need to be honest about this, both with the community and ourselves.</p>]]></description><link>http://localhost:2368/the-evils-of-open-source/</link><guid isPermaLink="false">b7ddbd65-f5a1-4101-b3e5-d31f996c5841</guid><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Mon, 06 Oct 2014 12:58:45 GMT</pubDate></item><item><title><![CDATA[Getting data from PDFs with JRuby]]></title><description><![CDATA[<p>There are many solutions for getting data from pdfs. I'm going to describe how to use the excellent Java library PDFTextStream by Chas Emerick (of Clojure fame) to get data out of tricky pdfs.</p>
 
 <h2 id="whypdftextstream">Why PDFTextStream?</h2>
 
