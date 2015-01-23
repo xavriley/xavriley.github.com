@@ -1,5 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Sun, 11 Jan 2015 14:22:53 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[The Evils of Open Source]]></title><description><![CDATA[<p>Recently I caught a conference talk by @rbin of SendGrid where he outlined some benefits of the "Open Source" movement for the uninitiated. Whilst it was a good talk, something about it lodged in my mind. For me the virtues of Open Source aren't as clear as the speaker made out and I'd like to articulate why, based on some quotes and tweets:</p>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Xavier Riley]]></title><description><![CDATA[Blogging about programming, companies and music.]]></description><link>http://localhost:2368/</link><generator>Ghost v0.4.1</generator><lastBuildDate>Fri, 23 Jan 2015 10:57:34 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><author><![CDATA[Xavier Riley]]></author><ttl>60</ttl><item><title><![CDATA[Neutron Accelerators and Drum Machines with Sonic Pi]]></title><description><![CDATA[<p>Working with <a href='http://sonic-pi.net/' >Sonic Pi</a> one of the exciting things about being able to code music is the potential for using algorithms. For the non-technical reader, I like to think of algorithms like following a recipie. You might start with the same ingredients but the order in which you do things can affect to outcome.</p>
+
+<p>When we think about music people often understand things at an intuitive level but become uneasy about the idea of using rules or recipies to generate it. "Formulaic" is a dirty word when used to describe pop songs for example, but it doesn't have to be that way. I'm going to look at one particular algorithm, Euclid's algorithm, to create musical rhythms.</p>
+
+<h2 id="amethodforspacingoutrhythms">A method for spacing out rhythms</h2>
+
+<p>Despite all the complex words I'm about to use, if all boils down to this: if I have a number of beats that I want to play in a given space (say 2 bars), how do I space those out as evenly as possible?</p>
+
+<p>That's obviously easy with regular rhythms that divide cleanly. If I want to play 8 beats across two bars of 8th notes it would look like this:</p>
+
+<pre><code>x . x . x . x . | x . x . x . x .  
+</code></pre>
+
+<p>That's 8 <code>x</code>'s spaced across the 16 possible beats. Easy peasy.</p>
+
+<p>But what about numbers that don't divide cleanly, for example, 3 into 8?</p>
+
+<p>Let's start with the solution first:</p>
+
+<pre><code>x . . x . . x .  
+</code></pre>
+
+<p>You can see we have to use a combination of long and short notes to fill the bar evenly. The above pattern uses groups of 3's and 2's to fill the space. You could easily notate it as:</p>
+
+<pre><code>332  
+</code></pre>
+
+<p>if you count the distances from one beat to the next. Let's look at a few more examples of these odd rhythms:</p>
+
+<pre><code># 5 into 8
+x . x . x x . x  
+22121
+
+# 13 into 16
+x . x x x x . x | x x x . x x x x  
+2111211121111  
+</code></pre>
+
+<p>One thing you might notice is that these aren't the only way to divide up the bar. To take our 3 into 8 rhythm there are actually three possible options:</p>
+
+<pre><code>x . . x . . x . #== 332  
+x . x . . x . . #== 233  
+x . . x . x . . #== 323  
+</code></pre>
+
+<p>The last of those options appears so often in so many kinds of music that it's often called "the mother rhythm". Everything from Cuban clave to Elvis' "Hound dog". That said, if you look closely they are all variations on the same grouping: 2 lots of 3 and one lot of 2. That means we only need to generate one version and then we can rotate it to produce the others. So how are we going to generate it then?</p>
+
+<h2 id="backtothefutureeuclidsalgorithmfrom300bc">Back to the future: Euclid's algorithm from 300 B.C.</h2>
+
+<p>It turns out that Euclid thought about this too - how do you space things out as evenly as possible? Thousands of years later a scientist named Bjorklund was facing the same problem when he was setting up a Neutron Accelerator. He needed to fire neutrons evenly in a given space of time (a bit like our rhythm problem) and, being a scientist, he came up with a clever way of doing that.</p>
+
+<pre><code class="ruby">    def distribute(accents, total_beats)
+      res = []
+
+      total_beats.times do |i|
+        # makes a boolean based on the index
+        # true is an accent, false is a rest
+        res &lt;&lt; ((i * accents % total_beats) &lt; accents)
+      end
+
+      res
+    end
+</code></pre>
+
+<p>That's the algorithm represented in Ruby. You don't have to understand it as it's probably not the simplest way of explaining it, but it's there to show how concise a problem like this can be when expressed in code.</p>
+
+<p>Years later a percussion-playing, scientifically-minded music professor was looking at the same problem applied to musical rhythms and came across Bjorklund's research. He took the idea and explored it in a paper <a href='http://cgm.cs.mcgill.ca/' ~godfried/publications/banff.pdf">"The Euclidean Algorithm Generates Traditional Musical Rhythms" (Toussaint 2005)</a> from which I've taken these ideas.</p>
+
+<h2 id="insonicpi">In Sonic Pi...</h2>
+
+<p>I've added a function to Sonic Pi called <code>distribute</code> which allows you to generate arrays that fit these evenly spaced patterns. Here's some sample code:</p>
+
+<pre><code class="ruby">def distribute(accents, total_beats, beat_rotations=0)  
+  res = []
+
+  total_beats.times do |i|
+    # makes a boolean based on the index
+    # true is an accent, false is a rest
+    res &lt;&lt; ((i * accents % total_beats) &lt; accents)
+  end
+
+  res.ring
+end
+
+class SonicPi::Core::RingArray  
+  def as_x_notation
+    self.to_a.map {|x| x ? 'x' : '.'}.join(' ')
+  end
+
+  def as_beat_groups
+    self.to_a.slice_before {|x| x }.to_a.map(&amp;:count).join
+  end
+end
+
+puts distribute(3, 8, 0).inspect  
+puts distribute(3, 8, 0).as_beat_groups  
+puts distribute(3, 8, 0).as_x_notation  
+</code></pre>
+
+<p>If you paste in the above code to SonicPi and run it, you should see this in the output window:</p>
+
+<pre><code> ├─ [true, false, false, true, false, false, true, false]
+ ├─ 332
+ └─ x . . x . . x .
+</code></pre>
+
+<p>From here it's not too hard to map over those arrays to turn them into musical patterns. Here's an example you can play with:</p>
+
+<pre><code class="ruby"># this function will land in a future version of SonicPi
+# (hopefully 2.4) if you're using a version with this included you can delete this distribute function
+def distribute(accents, total_beats, beat_rotations=0)  
+  res = []
+
+  total_beats.times do |i|
+    # makes a boolean based on the index
+    # true is an accent, false is a rest
+    res &lt;&lt; ((i * accents % total_beats) &lt; accents)
+  end
+
+  res.ring
+end
+
+# Monkey patching is never a good idea
+# just say no kids...
+class SonicPi::Core::RingArray  
+  def as_x_notation
+    self.to_a.map {|x| x ? 'x' : '.'}.join(' ')
+  end
+
+  def as_beat_groups
+    self.to_a.slice_before {|x| x }.to_a.map(&amp;:count).join
+  end
+end
+
+use_bpm(120)
+
+def play_sample_for_sequence(pattern, sample_name, sleep_time = 0.25)  
+  pattern.each.with_index do |beat, i|
+    sample sample_name if !!beat
+    sleep sleep_time
+  end
+end
+
+comment do  
+  live_loop(:hh) do
+    with_fx :level, amp: 1 do
+      cue :heartbeat
+      play_sample_for_sequence(distribute(11, 16), :drum_cymbal_closed)
+    end
+  end
+
+  live_loop(:bd) do
+    sync :heartbeat
+    play_sample_for_sequence(distribute(5, 16), :drum_bass_hard)
+  end
+
+  live_loop(:sn) do
+    with_fx :level, amp: 1 do
+      cue :heartbeat
+      play_sample_for_sequence(distribute(2, 16).to_a.rotate(4), :drum_snare_hard)
+    end
+  end
+
+  live_loop(:bass) do
+    with_fx :level, amp: 1 do
+      use_synth :tb303
+      cue :heartbeat
+      distribute(3, 8).each do |beat|
+        play scale(:a6, :minor_pentatonic).choose, release: 0.3 if beat
+        sleep 0.5
+      end
+    end
+  end
+end  
+</code></pre>
+
+<h2 id="whydoesthiswork">Why does this work?</h2>
+
+<p>Musically I think it's fair to say that last example sounds pretty cool. But why? I think that the appeal of these rhythms ("Euclidean Rhythms" as Toussaint calls them) boils down to this: because the spacing is always even, when we layer these kinds of beats on top of each other we get strong "cross rhythms". In the example above I've deliberately put the snare on beats 2 and 4 to provide a strong backbeat. All the other rhythms bounce off the strength of the snare rhythm.</p>
+
+<p>I think another possible reason is that our brains enjoy patterns and order even if we can't quite tell what the pattern is. Imagine the difference between two knitted jumpers, one with a completely random colour for every stitch, the other with a strong geometric pattern. Psychologically we're more likely to prefer the geometric pattern (unless the random knit <em>happens</em> to be really cool).</p>
+
+<p>Having these functions in our toolkit means that we can reach musical sounding results even faster, without having to rely on things being <em>totally</em> random but still retaining an element of surprise.</p>
+
+<p>What do you think? Does it sound cool to you? Will algorithmic music ever be widely accepted? Hit me up on twitter @xavriley if you have any comments or questions.</p>
+
+<h2 id="furtherrhythming">Further rhythming</h2>
+
+<p>This topic has already been covered in several other places, but not as far as I know in Sonic Pi yet. There's a very cool HTML5/Javascript version of this kind of drum machine available at <a href='http://www.groovemechanics.com/euclid/' >http://www.groovemechanics.com/euclid/</a> which has been on Hacker news. Also there's a patch for Max called <a href='https://www.youtube.com/watch?v=14tw_DRev_4' >Polyrhythmus</a> which is along the same lines. I wanted to cover the musical aspects behind the algorithm in a bit more depth for this post. There's also a good Wikipedia page on <a href='https://en.wikipedia.org/wiki/Euclidean_rhythm' >Euclidean rhythm</a> with links to other resources.</p>]]></description><link>http://localhost:2368/neutron-accelerators-and-drum-machines-with-sonic-pi/</link><guid isPermaLink="false">b25c3177-efd9-49e0-8115-11061eaa2585</guid><dc:creator><![CDATA[Xavier Riley]]></dc:creator><pubDate>Thu, 22 Jan 2015 12:16:15 GMT</pubDate></item><item><title><![CDATA[The Evils of Open Source]]></title><description><![CDATA[<p>Recently I caught a conference talk by @rbin of SendGrid where he outlined some benefits of the "Open Source" movement for the uninitiated. Whilst it was a good talk, something about it lodged in my mind. For me the virtues of Open Source aren't as clear as the speaker made out and I'd like to articulate why, based on some quotes and tweets:</p>
 
 <h2 id="exhibitasteveklabnikonopensource">Exhibit A: Steve Klabnik on Open Source</h2>
 
