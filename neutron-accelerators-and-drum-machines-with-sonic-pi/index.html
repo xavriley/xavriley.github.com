@@ -197,41 +197,46 @@ puts distribute(3, 8, 0).as_x_notation
 <p>From here it's not too hard to map over those arrays to turn them into musical patterns. Here's an example you can play with:</p>
 
 <pre><code class="ruby"># this function will land in a future version of SonicPi
-# (hopefully 2.4) if you're using a version with this included you can delete this distribute function
-def distribute(accents, total_beats, beat_rotations=0)  
-  res = []
+comment do
+  # this function is available in SonicPi v2.3 and upwards
+  # if you're using a version with this included you can 
+  # delete this distribute function, otherwise uncomment it
+  # above
+  def distribute(accents, total_beats, beat_rotations=0)
+    res = []
 
-  total_beats.times do |i|
-    # makes a boolean based on the index
-    # true is an accent, false is a rest
-    res &lt;&lt; ((i * accents % total_beats) &lt; accents)
+    total_beats.times do |i|
+      # makes a boolean based on the index
+      # true is an accent, false is a rest
+      res << ((i * accents % total_beats) < accents)
+    end
+
+    res.ring
   end
-
-  res.ring
 end
 
 # Monkey patching is never a good idea
 # just say no kids...
-class SonicPi::Core::RingArray  
+class SonicPi::Core::RingArray
   def as_x_notation
     self.to_a.map {|x| x ? 'x' : '.'}.join(' ')
   end
 
   def as_beat_groups
-    self.to_a.slice_before {|x| x }.to_a.map(&amp;:count).join
+    self.to_a.slice_before {|x| x }.to_a.map(&:count).join
   end
 end
 
 use_bpm(120)
 
-def play_sample_for_sequence(pattern, sample_name, sleep_time = 0.25)  
+def play_sample_for_sequence(pattern, sample_name, sleep_time = 0.25)
   pattern.each.with_index do |beat, i|
     sample sample_name if !!beat
     sleep sleep_time
   end
 end
 
-comment do  
+uncomment do
   live_loop(:hh) do
     with_fx :level, amp: 1 do
       cue :heartbeat
@@ -256,7 +261,7 @@ comment do
       use_synth :tb303
       cue :heartbeat
       distribute(3, 8).each do |beat|
-        play scale(:a6, :minor_pentatonic).choose, release: 0.3 if beat
+        play scale(:a2, :minor_pentatonic).choose, release: 0.3 if beat
         sleep 0.5
       end
     end
@@ -319,7 +324,7 @@ end
 
 	    </div>
 
-	    <script src="../shared/vendor/jquery/jquery.js?v=3ed94c19d6"></script>
+	    <script src="../shared/vendor/jquery/jquery.js?v=7f9700bded"></script>
 
 	    <script type='text/javascript' src='../assets/js/scripts.min.js'></script>
 	    <script type='text/javascript' src='../assets/js/vendor/highlight/highlight.pack.js'></script>
